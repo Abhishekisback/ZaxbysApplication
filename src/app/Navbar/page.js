@@ -9,8 +9,8 @@ import locator from "../../../public/Images/location.png";
 import { FaBars, FaTimes } from "react-icons/fa";
 import axios from "axios";
 
-const myfont26 = localfont({ src: "../fonts/zaxsans-rough/ZaxSansRough.ttf" });
-
+// const myfont26 = localfont({ src: "../fonts/zaxsans-rough/ZaxSansRough.ttf" });
+const gfont=localfont({src:"../fonts/Pacifico-Regular.ttf"})
 export default function Navbar() {
   const [openmenu, setopenmenu] = useState(false);
   const [navbardata, setnavbardata] = useState();
@@ -63,7 +63,9 @@ export default function Navbar() {
           />
           <div className={openmenu ? style.navmenumobile : style.navmenus}>
           
-            <button className={style.startorderingbtn}>
+            <button className={style.startorderingbtn}
+            style={gfont.style}
+            >
               {navbardata.data[0].attributes.NavbarArray.startorderbtn}
             </button>
             {navbardata.data[0].attributes.NavbarArray.navitems.map(
@@ -73,7 +75,7 @@ export default function Navbar() {
                     href=""
                     onClick={closemobilemenu}
                     className={style.navlink}
-                    style={myfont26.style}
+                    style={gfont.style}
                   >
                     {ele}
                   </Link>
@@ -83,7 +85,7 @@ export default function Navbar() {
             <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
               <Link
                 href=""
-                style={myfont26.style}
+                style={gfont.style}
                 className={style.selectstore}
               >
                 Select Store

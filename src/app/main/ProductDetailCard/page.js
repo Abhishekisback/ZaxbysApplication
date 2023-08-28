@@ -3,8 +3,8 @@ import style from "./style.module.css";
 import localfont from "next/font/local";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-const myfont3 = localfont({ src: "../../fonts/zaxsans-regular.woff" });
-
+// const myfont3 = localfont({ src: "../../fonts/zaxsans-regular.woff" });
+const gfont=localfont({src:"../../fonts/Pacifico-Regular.ttf"})
 export default function ProductDetailCard({ category, imageurl, title, key }) {
   const NavigateTo = useRouter();
 
@@ -25,7 +25,7 @@ export default function ProductDetailCard({ category, imageurl, title, key }) {
         className={style.productimage}
         alt="dish image"
       ></Image>
-      <p style={myfont3.style} className={style.productname}>
+      <p style={gfont.style} className={style.productname}>
         {title}
       </p>
     </div>
