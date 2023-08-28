@@ -1,0 +1,48 @@
+.video
+{
+    width: 100vw;
+    height: 500px;
+    object-fit: fill;
+  
+}
+
+.homeproductspage
+{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #0c2340;
+     gap: 20px;
+     text-align: center;
+     justify-content: center;
+
+}
+.productcard
+{
+    background-color: #0c2340;
+    width: 280px;
+    height: 250px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    
+}
+.productname
+{
+    color: #0c2340;
+    font-size: 24px;
+    /* text-transform: lowercase; */
+}
+.productimage
+{
+    border-radius: 25px;
+}
+.headerline1
+{
+    font-size: 28px;
+    color: #0c2340;
+    padding: 10px;
+}

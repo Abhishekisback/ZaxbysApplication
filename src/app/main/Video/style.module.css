@@ -1,0 +1,14 @@
+.video {
+  width: 100vw;
+  height: 450px;
+  object-fit: fill;
+}
+
+@media screen and (max-width: 780px) {
+    .video
+    {
+        height: 250px; 
+    }
+}
+
+

@@ -1,0 +1,93 @@
+.menuicon {
+  display: none;
+}
+.navbar {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  width: 100vw;
+  justify-content: space-around;
+  padding: 10px;
+  height: 80px;
+
+}
+.navmenus {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 45px;
+  width: 70vw;
+  background-color: white;
+}
+
+/* .navmenumobile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+} */
+.active {
+  color: green;
+  text-decoration: none;
+}
+.navlink {
+  color: #0c2340;
+  text-decoration: none;
+  font-size: 23px;
+  text-transform: uppercase;
+}
+.startorderingbtn {
+  width: 170px;
+  height: 40px;
+  border-radius: 15px;
+  outline: none;
+  border: 1px solid white;
+  background-color: #e4002a;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+.selectstore {
+  font-size: 23px;
+  color: #e4002a;
+  text-decoration: underline;
+  margin-left: 55px;
+}
+@media screen and (max-width: 780px) {
+  .menuicon {
+    display: block;
+  }
+  .navmenus {
+    display: none;
+    pointer-events: none;
+  }
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 5px;
+    height: max-content;
+    background-color: white;
+    align-items: flex-start;
+    text-align: justify;
+   
+  }
+  .navmenumobile {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+   
+    background-color: white;
+  }
+
+  .navlink {
+    color: #0c2340;
+    padding: 10px;
+    width: 100%;
+    font-size: 18px;
+  }
+  .selectstore {
+    font-size: 18px;
+    text-align: justify;
+    margin-left: 10px;
+  }
+}

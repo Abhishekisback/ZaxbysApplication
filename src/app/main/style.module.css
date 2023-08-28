@@ -1,0 +1,16 @@
+
+.homeproductspage {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #0c2340;
+  gap: 20px;
+  text-align: center;
+  justify-content: center;
+  padding-top: 20px;
+  width: 100vw;
+  
+}
+
+
+
+

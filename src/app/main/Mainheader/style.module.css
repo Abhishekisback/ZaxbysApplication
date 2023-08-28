@@ -1,0 +1,33 @@
+.maintitle {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  width: 100vw;
+  align-items: center;
+  height: 300px;
+  padding: 10px;
+}
+.title1 {
+  font-size: 65px;
+  color: #0c2340;
+}
+.title2 {
+  font-size: 70px;
+  background-image: url(../../../../public/Images/textured-block-yellow-xl.svg);
+  padding: 2px;
+  background-repeat: repeat;
+  width: 500px;
+  color: #0c2340;
+  text-align: center;
+}
+
+@media screen and (max-width:780px) {
+  .title1{
+    font-size: 40px;
+  }
+  .title2{
+    font-size: 40px;
+    width: max-content;
+  }
+  
+}

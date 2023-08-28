@@ -1,0 +1,31 @@
+.feedingacrowd {
+    width: 280px;
+    height: 250px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+    align-items: center;
+  }
+  .feed {
+    padding: 5px;
+    color: white;
+    font-size: 25px;
+  }
+  
+  .feedmenu {
+    border-bottom: 4px solid orange;
+    border-bottom-left-radius: 5px;
+  }
+  
+  .ordernow {
+    padding: 15px;
+    border-radius: 25px;
+    outline: none;
+    border: none;
+    background-color: white;
+    width: 184px;
+    color: #0c2340;
+  }
+  

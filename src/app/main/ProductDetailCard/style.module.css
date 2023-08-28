@@ -1,0 +1,21 @@
+.productcard {
+    background-color: #0c2340;
+    width: 300px;
+    height: 246px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    text-align: center;
+    
+    
+  }
+  .productname {
+    color: white;
+    font-size: 24px;
+   
+  }
+  .productimage {
+    border-radius: 25px;
+  }
