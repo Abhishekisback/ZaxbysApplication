@@ -91,7 +91,7 @@ export default function Navbar() {
           
           <p style={gfont.style} className={style.loadingmsg}>
             loading...
-            <Image src={image2} width={50} height={50}></Image>
+            <Image src={image2} width={50} height={50} alt="loadingn_img"></Image>
           </p>
         </div>
       )}

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React,{useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import style from "./style.module.css";
@@ -7,13 +7,18 @@ import localfont from "next/font/local";
 import image2 from "../../../../../public/Images/sad.png";
 
 const gfont = localfont({ src: "../../../fonts/Pacifico-Regular.ttf" });
-export default function page({ params }) {
+
+export default function page({ params }) 
+{
   console.log("params2", params.Individualproduct);
   const [products, setproducts] = useState({});
+
   useEffect(() => {
     loadproductdetails();
-  }, []);
-  async function loadproductdetails() {
+  }, [loadproductdetails]);
+
+  async function loadproductdetails()
+   {
     await axios
       .get(
         `https://zaxbys-strapi.onrender.com/api/categorywiseproductlists?filters[Productname][$eq]=${params.Individualproduct}`
