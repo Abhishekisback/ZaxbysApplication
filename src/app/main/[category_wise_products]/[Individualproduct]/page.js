@@ -1,5 +1,5 @@
 "use client";
-import React,{useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import style from "./style.module.css";
@@ -8,36 +8,34 @@ import image2 from "../../../../../public/Images/sad.png";
 
 const gfont = localfont({ src: "../../../fonts/Pacifico-Regular.ttf" });
 
-export default function page({ params }) 
-{
+const IndividualproductPage = ({ params }) => {
   console.log("params2", params.Individualproduct);
-  const [products, setproducts] = useState({});
+  // const [products, setproducts] = useState({});
 
-  useEffect(() => {
-    loadproductdetails();
-  }, [loadproductdetails]);
+  // useEffect(() => {
+  //   loadproductdetails();
+  // }, [loadproductdetails]);
 
-  async function loadproductdetails()
-   {
-    await axios
-      .get(
-        `https://zaxbys-strapi.onrender.com/api/categorywiseproductlists?filters[Productname][$eq]=${params.Individualproduct}`
-      )
-      .then((res) => {
-        if (res.status === 200 && res.data) {
-          console.log("pname", res?.data?.data[0]?.attributes?.Price);
-          setproducts(res?.data?.data[0]?.attributes);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+  // async function loadproductdetails() {
+  //   await axios
+  //     .get(
+  //       `https://zaxbys-strapi.onrender.com/api/categorywiseproductlists?filters[Productname][$eq]=${params.Individualproduct}`
+  //     )
+  //     .then((res) => {
+  //       if (res.status === 200 && res.data) {
+  //         console.log("pname", res?.data?.data[0]?.attributes?.Price);
+  //         setproducts(res?.data?.data[0]?.attributes);
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }
   console.log("products state", products?.Price);
 
   return (
     <>
-      {products?.imageurl && products?.Productname ? (
+      {/* {products?.imageurl && products?.Productname ? (
         <>
           <p style={gfont.style} className={style.productname1}>
             {products?.Productname}
@@ -83,7 +81,10 @@ export default function page({ params })
           <span style={{ color: "red" }}>{params.Individualproduct}</span> not
           Found.... .Please Try Reloading
         </p>
-      )}
+      )} */}
+      <p>helloooo</p>
     </>
   );
-}
+};
+
+export default IndividualproductPage;
