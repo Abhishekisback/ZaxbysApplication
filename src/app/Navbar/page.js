@@ -1,27 +1,27 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { MakeApiCall } from "../MakeAPICall";
 import Link from "next/link";
 import style from "./style.module.css";
 import localfont from "next/font/local";
 import locator from "../../../public/Images/location.png";
 import { FaBars, FaTimes } from "react-icons/fa";
 import axios from "axios";
+import image2 from "../../../public/Images/waiting.png";
 
-// const myfont26 = localfont({ src: "../fonts/zaxsans-rough/ZaxSansRough.ttf" });
-const gfont=localfont({src:"../fonts/Pacifico-Regular.ttf"})
+const gfont = localfont({ src: "../fonts/Pacifico-Regular.ttf" });
+
 export default function Navbar() {
   const [openmenu, setopenmenu] = useState(false);
   const [navbardata, setnavbardata] = useState();
   function getNavbarfields() {
     axios
-      .get("http://localhost:1337/api/get-navbar-fields")
+      .get("https://zaxbys-strapi.onrender.com/api/get-navbar-fields")
       .then((res) => {
         if (res.status === 200) {
-          setnavbardata(res.data);
+          setnavbardata(res?.data);
           //console.log(navbardata.data[0].attributes.NavbarArray.startorderbtn);
-          res.data.data[0].attributes.NavbarArray.navitems.map((ele, i) =>
+          res?.data?.data[0]?.attributes?.NavbarArray?.navitems.map((ele, i) =>
             console.log(ele)
           );
         }
@@ -33,7 +33,7 @@ export default function Navbar() {
   }, []);
 
   function handleclick() {
-  setopenmenu(!openmenu);
+    setopenmenu(!openmenu);
   }
 
   function closemobilemenu() {
@@ -41,14 +41,13 @@ export default function Navbar() {
   }
   return (
     <>
-      {navbardata ? (
+      {navbardata?.data[0]?.attributes ? (
         <nav className={style.navbar}>
           <div className={style.menuicon}>
             {openmenu ? (
               <FaTimes
                 size={30}
                 color="#A6192E"
-                
                 onClick={handleclick}
               ></FaTimes>
             ) : (
@@ -62,10 +61,7 @@ export default function Navbar() {
             alt="Zaxbys Logo img"
           />
           <div className={openmenu ? style.navmenumobile : style.navmenus}>
-          
-            <button className={style.startorderingbtn}
-            style={gfont.style}
-            >
+            <button className={style.startorderingbtn} style={gfont.style}>
               {navbardata.data[0].attributes.NavbarArray.startorderbtn}
             </button>
             {navbardata.data[0].attributes.NavbarArray.navitems.map(
@@ -83,11 +79,7 @@ export default function Navbar() {
               )
             )}
             <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
-              <Link
-                href=""
-                style={gfont.style}
-                className={style.selectstore}
-              >
+              <Link href="" style={gfont.style} className={style.selectstore}>
                 Select Store
               </Link>
               <Image src={locator} width={30} height={35} alt="location" />
@@ -95,7 +87,13 @@ export default function Navbar() {
           </div>
         </nav>
       ) : (
-        <p style={{textAlign:"center"}}>loading...</p>
+        <div className={style.Loaders}>
+          
+          <p style={gfont.style} className={style.loadingmsg}>
+            loading...
+            <Image src={image2} width={50} height={50}></Image>
+          </p>
+        </div>
       )}
     </>
   );

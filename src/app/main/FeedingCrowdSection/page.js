@@ -8,21 +8,32 @@ const gfont=localfont({src:"../../fonts/Pacifico-Regular.ttf"})
 
 export default async function FeedingCrowdComponent() {
 
-    let feedingcrowd= await MakeApiCall("http://localhost:1337/api/feeding-crowds","GET");
+    let feedingcrowd= await MakeApiCall("https://zaxbys-strapi.onrender.com/api/feeding-crowds","GET");
 
   return (
     
-      <div className={style.feedingacrowd}>
+      <>
+      {
+        feedingcrowd?.data?.[0]?.attributes ?(
+          <div className={style.feedingacrowd}>
         <p style={gfont.style} className={style.feed}>
-          {feedingcrowd.data[0].attributes.feedingcrowdsection.feedingline}
+          {feedingcrowd?.data?.[0]?.attributes?.feedingcrowdsection?.feedingline}
           <span style={gfont.style} className={style.feedmenu}>
-            {feedingcrowd.data[0].attributes.feedingcrowdsection.feedingmenu}
+            {feedingcrowd?.data?.[0]?.attributes?.feedingcrowdsection?.feedingmenu}
           </span>
         </p>
         <button className={style.ordernow} style={gfont.style}>
-          {feedingcrowd.data[0].attributes.feedingcrowdsection.btn_order}
+          {feedingcrowd?.data?.[0]?.attributes?.feedingcrowdsection?.btn_order}
         </button>
       </div>
+        ):(
+          <div>
+            <p style={gfont.style}>Loading....</p>
+          </div>
+        )
+      }
+
+      </>
     
   );
 }

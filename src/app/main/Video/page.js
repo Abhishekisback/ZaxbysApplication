@@ -1,17 +1,32 @@
+import Loaders from "@/app/loader/page";
 import { MakeApiCall } from "../../MakeAPICall";
 import style from "./style.module.css"
+import localfont from "next/font/local"
 
-export default async function VideoSection() {
+const gfont=localfont({src:"../../fonts/Pacifico-Regular.ttf"})
+
+export default async function VideoSection()
+ {
   const introvideo = await MakeApiCall(
-    "http://localhost:1337/api/zaxbys-behind-scene-videos",
+    "https://zaxbys-strapi.onrender.com/api/zaxbys-behind-scene-videos",
     "GET"
   );
-
+  console.log("introvideo",introvideo)
   return (
     <>
-      <video className={style.video} controls autoPlay loop>
+     {
+      introvideo?.data?.[0]?.attributes?.video_url? (
+        <video className={style.video} controls autoPlay loop>
         <source src={introvideo.data[0].attributes.video_url}></source>
       </video>
+      ):(
+       <div className={style.VideoSection} >
+        <Loaders></Loaders>
+        <p style={gfont.style}>Loading Behind The scene video...</p>
+        
+       </div>
+      )
+     }
     </>
   );
 }

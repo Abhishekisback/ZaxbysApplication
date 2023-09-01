@@ -3,9 +3,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
 import style from "./style.module.css";
-import localfont from "next/font/local"
-const myfont4 = localfont({ src: "../../../fonts/zaxscript-regular.woff" });
-const myfont3 = localfont({ src: "../../../fonts/zaxsans-regular.woff" });
+import localfont from "next/font/local";
+import image2 from "../../../../../public/Images/sad.png";
+
+const gfont = localfont({ src: "../../../fonts/Pacifico-Regular.ttf" });
 export default function page({ params }) {
   console.log("params2", params.Individualproduct);
   const [products, setproducts] = useState({});
@@ -15,38 +16,69 @@ export default function page({ params }) {
   async function loadproductdetails() {
     await axios
       .get(
-        `http://localhost:1337/api/categorywiseproductlists?filters[Productname][$eq]=${params.Individualproduct}`
+        `https://zaxbys-strapi.onrender.com/api/categorywiseproductlists?filters[Productname][$eq]=${params.Individualproduct}`
       )
       .then((res) => {
         if (res.status === 200 && res.data) {
-          console.log("pname", res.data.data[0].attributes.Price);
-          setproducts(res.data.data[0].attributes);
+          console.log("pname", res?.data?.data[0]?.attributes?.Price);
+          setproducts(res?.data?.data[0]?.attributes);
         }
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }
   console.log("products state", products?.Price);
 
   return (
-    <div className={style.mainwrapper}>
-      <div className={style.singleproductcard}>
-        <div>
-          <Image src={products?.imageurl} width={300} height={300} alt="img" />
-          <p style={myfont4.style} className={style.productname}  >{products?.Productname}</p>
-        </div>
-       <div className={style.descwrapper}>
-       <p style={myfont4.style} className={style.description} >{products?.description}</p>
-        <p style={myfont4.style}
-        className={style.price}
-        >Price:{products?.Price} $</p>
+    <>
+      {products?.imageurl && products?.Productname ? (
+        <>
+          <p style={gfont.style} className={style.productname1}>
+            {products?.Productname}
+          </p>
+          <div className={style.mainwrapper}>
+            <div className={style.singleproductcard}>
+              <div>
+                <Image
+                  src={products?.imageurl}
+                  width={350}
+                  height={300}
+                  alt="img"
+                />
+                <p style={gfont.style} className={style.productname}>
+                  {products?.Productname}
+                </p>
+              </div>
+              <div className={style.descwrapper}>
+                <p style={gfont.style} className={style.description}>
+                  {products?.description}
+                </p>
+                <p style={gfont.style} className={style.price}>
+                  Price:{products?.Price} $
+                </p>
 
-        <button style={myfont3.style}
-        className={style.buynow}
-        onClick={()=>{
-            alert("Out Of Stock ... will be available soon")
-        }}
-        >Buy NOW!!</button>
-       </div>
-      </div>
-    </div>
+                <button
+                  style={gfont.style}
+                  className={style.buynow}
+                  onClick={() => {
+                    alert("Out Of Stock ... will be available soon");
+                  }}
+                >
+                  Buy NOW!!
+                </button>
+              </div>
+            </div>
+          </div>
+        </>
+      ) : (
+        <p className={style.notfound} style={gfont.style}>
+          Oops...Currently
+          <Image src={image2} width={50} height={50} alt="img" />
+          <span style={{ color: "red" }}>{params.Individualproduct}</span> not
+          Found.... .Please Try Reloading
+        </p>
+      )}
+    </>
   );
 }

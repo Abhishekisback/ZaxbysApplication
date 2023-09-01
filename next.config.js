@@ -1,9 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    domains: [
+      "localhost",
+      "fakestoreapi.com",
+      "res.cloudinary.com",
+      "zaxbys-strapi.onrender.com",
+    ],
+  },
+};
 
-    images:{
-        domains: ['localhost','fakestoreapi.com']
-    }
-}
-
-module.exports = nextConfig
+module.exports = nextConfig;

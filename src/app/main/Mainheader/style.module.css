@@ -12,10 +12,10 @@
   color: #0c2340;
 }
 .title2 {
-  font-size: 70px;
+  font-size: 60px;
   background-image: url(../../../../public/Images/textured-block-yellow-xl.svg);
   padding: 2px;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   width: 500px;
   color: #0c2340;
   text-align: center;

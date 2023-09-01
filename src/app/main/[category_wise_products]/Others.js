@@ -11,28 +11,29 @@ import "./Slickstyle.css";
 import NextArrow from "./NextArrow";
 import PrevArrow from "./PrevArrow";
 import { useRouter } from "next/navigation";
+const gfont = localfont({ src: "../../fonts/Pacifico-Regular.ttf" });
 
 
-const myfont6 = localfont({ src: "../../fonts/zaxscript-rough.woff" });
-const myfont3 = localfont({ src: "../../fonts/zaxsans-regular.woff" });
+export default function Others({category_wise_products}) {
 
-export default function Others() {
+  
   const router = useRouter();
   const [homeproducts, sethomeproducts] = useState([]);
   async function gethomeproducts() {
     await axios
-      .get("http://localhost:1337/api/home-page-products")
+      .get("https://zaxbys-strapi.onrender.com/api/home-page-products")
       .then((res) => {
         if (res.status === 200 && res.data) {
           sethomeproducts(res.data?.data);
           console.log(res.data.data);
         }
-      });
+      })
+      .catch((err) => console.log(err));
   }
 
   function navigateto(path) {
-     console.log("path",path)
-     router.push(`${params.category_wise_products}/${path}`)
+    console.log("path", path);
+    router.push(`${category_wise_products}/${path}`);
   }
   useEffect(() => {
     gethomeproducts();
@@ -52,39 +53,47 @@ export default function Others() {
 
   return (
     <>
-      <p className={style.categoryname}
-      style={myfont6.style}
-      >Try our New Dishes..</p>
-      {
-        homeproducts? (<div className={style.wrapper}>
-            <Slider {...settings}>
-              {homeproducts.map((ele, i) => {
-                return (
-                  <div className={style.cards} key={i} onClick={() => {}}>
-                    <Image
-                      src={ele.attributes.imageurl}
-                      className={style.prodimage}
-                      width={200}
-                      height={200}
-                      alt="image"
-                    ></Image>
-                    <p style={myfont3.style}>{ele.attributes.Productname}</p>
-                    <div className={style.addsection}>
-                      <p style={myfont3.style}>Price :9$</p>
-                      <button style={myfont6.style} className={style.addbtn}>
-                        Add
-                      </button>
-                    </div>
+      <p className={style.categoryname} style={gfont.style}>
+        Try our New Dishes..
+      </p>
+      {homeproducts ? (
+        <div className={style.wrapper}>
+          <Slider {...settings}>
+            {homeproducts.map((ele, i) => {
+              return (
+                <div
+                  className={style.cards}
+                  key={i}
+                  onClick={() => {
+                    navigateto(ele.attributes.Productname);
+                  }}
+                >
+                  <Image
+                    src={ele.attributes.imageurl}
+                    className={style.prodimage}
+                    width={200}
+                    height={200}
+                    alt="image"
+                  ></Image>
+                  <p className={style.producttitle}  style={gfont.style}>{ele.attributes.Productname}</p>
+                  <div className={style.addsection}>
+                    <p className={style.producttitle}  style={gfont.style}>Price :9$</p>
+                    <button style={gfont.style} className={style.addbtn}>
+                      Add
+                    </button>
                   </div>
-                );
-              })}
-            </Slider>
-          </div>):(
-            <div>
-                <p className={style.Notfoundmsg} style={myfont6.style}>Unable to load products....!!!</p>
-            </div>
-          )
-      }
+                </div>
+              );
+            })}
+          </Slider>
+        </div>
+      ) : (
+        <div>
+          <p className={style.Notfoundmsg} style={gfont.style}>
+            Unable to load products....!!!
+          </p>
+        </div>
+      )}
     </>
   );
 }

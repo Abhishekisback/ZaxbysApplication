@@ -1,4 +1,3 @@
-
 import Header from "./Header/page";
 import Navbar from "./Navbar/page";
 import "./globals.css";
@@ -11,6 +10,7 @@ export default function HomPage() {
         {/* <Header />
         <Navbar /> */}
         <Maincontent />
+       
       </>
     </>
   );

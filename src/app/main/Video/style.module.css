@@ -2,13 +2,22 @@
   width: 100vw;
   height: 450px;
   object-fit: fill;
+  margin-top: 5px;
 }
 
 @media screen and (max-width: 780px) {
-    .video
-    {
-        height: 250px; 
-    }
+  .video {
+    height: 250px;
+  }
 }
 
-
+.VideoSection {
+  width: 100vw;
+  font-size: 25px;
+  color: #0c2340;
+  height: 150px;
+  background-color: white;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}

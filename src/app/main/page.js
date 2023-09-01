@@ -6,34 +6,53 @@ import FeedingCrowdComponent from "./FeedingCrowdSection/page";
 import { MakeApiCall } from "../MakeAPICall";
 import ProductDetailCard from "./ProductDetailCard/page";
 
+import localfont from "next/font/local";
+import Loaders from "../loader/page";
 
-export default async function Maincontent() {
+const gfont = localfont({ src: "../fonts/Pacifico-Regular.ttf" });
+
+export default async function Maincontent() 
+{
   let homeproducts = await MakeApiCall(
-    "http://localhost:1337/api/home-page-products",
+    "https://zaxbys-strapi.onrender.com/api/home-page-products",
     "GET"
   );
+
   console.log("home products", homeproducts);
-  homeproducts.data.map((prod) => console.log(prod.attributes.imageurl));
+
+  homeproducts?.data?.map((prod) => console.log(prod.attributes.imageurl));
 
   return (
     <>
-      <VideoSection />
-      <Mainheader />
-      <div className={style.homeproductspage}>
-        {homeproducts.data.map((product, i) => {
-          return (
-            <>
-              <ProductDetailCard
-                category={product.attributes.category}
-                imageurl={product.attributes.imageurl}
-                title={product.attributes.Productname}
-                key={i}
-              />
-            </>
-          );
-        })}
-        <FeedingCrowdComponent />
-      </div>
+    <VideoSection/>
+    <Mainheader/>
+
+      {homeproducts?.data ? (
+        <div className={style.homeproductspage}>
+          {homeproducts.data.map((product, i) => {
+            return (
+              <>
+                <ProductDetailCard
+                  category={product.attributes.category}
+                  imageurl={product.attributes.imageurl}
+                  title={product.attributes.Productname}
+                  key={i}
+                />
+              </>
+            );
+          })}
+          <FeedingCrowdComponent />
+        </div>
+      ) : (
+        <div className={style.loadingpagerr}>
+          <Loaders></Loaders>
+          <p style={gfont.style}>Error loading page please try after sometime</p>
+        </div>
+      )}
+      
     </>
   );
 }
+
+
+
