@@ -2,7 +2,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
-function page({ params }) {
+function Page({ params }) {
   useEffect(() => {
     axios
       .get("https://fakestoreapi.com/products")
@@ -21,4 +21,4 @@ function page({ params }) {
   );
 }
 
-export default page;
+export default Page;
