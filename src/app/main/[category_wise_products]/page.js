@@ -52,7 +52,7 @@ export default function CategoryWiseProducts({ params }) {
     infinite: true,
     speed: 1000,
     slidesToShow: 2,
-    slidesToScroll: 3,
+    slidesToScroll: 2,
     nextArrow: <NextArrow></NextArrow>,
     prevArrow: <PrevArrow></PrevArrow>,
   };

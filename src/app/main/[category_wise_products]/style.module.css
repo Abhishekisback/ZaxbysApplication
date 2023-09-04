@@ -44,7 +44,7 @@
   margin-top: 50px;
   font-size: 32px;
   padding: 5px;
-  color: white;
+  color: #0c234c;
   text-transform: uppercase;
   border-bottom: 8px solid orange;
   border-bottom-right-radius: 5px;
@@ -54,7 +54,7 @@
 
 .container {
   width: 100vw;
-  background-color: #0d59b6;
+  background-color: white;
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -91,7 +91,7 @@
 
 
 .prodimage {
-  object-fit: fill;
+  object-fit: cover;
   width: 100%;
 }
 
@@ -134,4 +134,23 @@
 .producttitle
 {
   font-size: 30px;
+}
+
+@media screen  and (max-width:780px) {
+
+  .addbtn{
+    font-size: 14px;
+    width:50px;
+  }
+
+  .addsection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .producttitle{
+    font-size: 18px;
+  }
+  
 }

@@ -46,7 +46,7 @@ export default function Others({category_wise_products}) {
     infinite: true,
     speed: 1000,
     slidesToShow: 2,
-    slidesToScroll: 3,
+    slidesToScroll: 2,
     nextArrow: <NextArrow></NextArrow>,
     prevArrow: <PrevArrow></PrevArrow>,
   };

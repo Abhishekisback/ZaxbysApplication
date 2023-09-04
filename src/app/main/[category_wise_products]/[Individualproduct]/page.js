@@ -1,10 +1,9 @@
 "use client"
-import React from 'react'
 
-function page({params}) {
+function page() {
   return (
     <div>
-      <p>name{params.Individualproduct}</p>
+      <p>Individual product</p>
     </div>
   )
 }
