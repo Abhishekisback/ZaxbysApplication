@@ -59,7 +59,6 @@
   flex-direction: column;
   gap: 50px;
   height: 100%;
- 
 }
 
 .cards {
@@ -73,22 +72,18 @@
   flex-direction: column;
   text-align: center;
   align-items: center;
- 
 }
 
 .wrapper {
   width: 80vw;
-  height:400px;
+  height: 400px;
   margin-left: 10vw;
   margin-right: 10vw;
   background-color: #0c234c;
   margin-bottom: 100px;
   /* position: relative; */
   padding: 20px;
-
 }
-
-
 
 .prodimage {
   object-fit: cover;
@@ -110,47 +105,80 @@
   font-size: 20px;
 }
 
-.NextArrow{
-  position:absolute;
+.NextArrow {
+  position: absolute;
   top: 0px;
   left: 10%;
   bottom: 10px;
-  
 }
 
-.Notfoundmsg
-{
+.Notfoundmsg {
   font-size: 35px;
   color: #e4002a;
   text-align: center;
   padding: 5px;
 }
-.tryout{
+.tryout {
   font-size: 30px;
-  color:orange;
+  color: orange;
   padding: 5px;
   text-align: center;
 }
-.producttitle
-{
+.producttitle {
   font-size: 30px;
 }
 
-@media screen  and (max-width:780px) {
-
-  .addbtn{
+@media screen and (max-width: 780px) {
+  .addbtn {
     font-size: 14px;
-    width:50px;
+    width: 50px;
   }
 
-  .addsection{
+  .addsection {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .producttitle{
+  .producttitle {
     font-size: 18px;
   }
-  
+  .Notfoundmsg,
+  .tryout {
+    font-size: 20px;
+  }
+  .NextArrow {
+    left: 15%;
+  }
+  .categoryname {
+    font-size: 16px;
+    margin-top: 0;
+    border-bottom: 3px solid orange;
+    border-bottom-right-radius: 5px;
+    margin-bottom: 4px;
+  }
+  .wrapper {
+    padding: 5px;
+    margin-bottom: 0px;
+    height: auto;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  .cards {
+    width: 200px;
+   height: auto;
+   padding: 2px;
+   border-radius: 0px;
+
+  }
+  .prodimage{
+    height: 150px;
+    object-fit:cover;
+    width: 100%;
+
+  }
 }

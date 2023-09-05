@@ -32,9 +32,9 @@
 
 @media screen and (max-width: 780px) {
   .headerline2 {
-    text-transform: uppercase;
+    text-transform: lowercase;
     color: #0c2340;
-    font-size: 14px;
+    font-size: 18px;
   }
 }
 

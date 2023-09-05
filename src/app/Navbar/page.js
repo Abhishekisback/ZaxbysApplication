@@ -55,6 +55,7 @@ export default function Navbar() {
             )}
           </div>
           <Image
+           className={style.logoimg}
             src={navbardata.data[0].attributes.NavbarArray.logo_img_url}
             width={150}
             height={60}

@@ -1,13 +1,13 @@
 .video {
   width: 100vw;
-  height: 450px;
-  object-fit: fill;
+  height: 550px;
+  object-fit: cover;
   margin-top: 5px;
 }
 
 @media screen and (max-width: 780px) {
   .video {
-    height: 250px;
+    height: 450px;
   }
 }
 

@@ -55,6 +55,32 @@ export default function CategoryWiseProducts({ params }) {
     slidesToScroll: 2,
     nextArrow: <NextArrow></NextArrow>,
     prevArrow: <PrevArrow></PrevArrow>,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+          
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
   return (
@@ -62,7 +88,6 @@ export default function CategoryWiseProducts({ params }) {
       <p className={style.categoryname} style={gfont.style}>
         {params.category_wise_products}
       </p>
-
       {products.length != 0 ? (
         <div className={style.wrapper}>
           <Slider {...settings}>

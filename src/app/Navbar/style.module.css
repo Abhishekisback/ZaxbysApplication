@@ -10,7 +10,6 @@
   padding: 10px;
   height: 80px;
   box-shadow: 0px 6px 3px rgb(156, 155, 155);
-
 }
 .navmenus {
   display: flex;
@@ -54,31 +53,25 @@
   margin-left: 55px;
 }
 
-.loadingmsg{
-width: 100vw;
-height: 80px;
-background-color: white;
-text-align: center;
-font-size: 24px;
+.loadingmsg {
+  width: 100vw;
+  height: 80px;
+  background-color: white;
+  text-align: center;
+  font-size: 24px;
 }
-.Loaders{
+.Loaders {
   display: flex;
   justify-content: center;
   text-align: center;
-
 }
-
-
-
-
-
-
-
-
 
 @media screen and (max-width: 780px) {
   .menuicon {
     display: block;
+    position: absolute;
+    right: 30px;
+    top: 15px;
   }
   .navmenus {
     display: none;
@@ -93,13 +86,13 @@ font-size: 24px;
     background-color: white;
     align-items: flex-start;
     text-align: justify;
-   
+    position: relative;
   }
   .navmenumobile {
     display: flex;
     flex-direction: column;
     gap: 20px;
-   
+
     background-color: white;
   }
 
@@ -114,7 +107,11 @@ font-size: 24px;
     text-align: justify;
     margin-left: 10px;
   }
+  .logoimg {
+    width: 100px;
+    height: 45x;
+  }
 }
-.Loaders{
+.Loaders {
   display: flex;
 }
