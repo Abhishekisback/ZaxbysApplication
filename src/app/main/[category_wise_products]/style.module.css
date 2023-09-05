@@ -51,6 +51,11 @@
   width: fit-content;
   text-align: center;
 }
+.categorynameop{
+  color: #0c234c;
+  font-size: 24px;
+  text-transform: uppercase;
+}
 
 .container {
   width: 100vw;
@@ -76,7 +81,7 @@
 
 .wrapper {
   width: 80vw;
-  height: 400px;
+  height: 440px;
   margin-left: 10vw;
   margin-right: 10vw;
   background-color: #0c234c;

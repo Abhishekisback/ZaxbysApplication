@@ -78,6 +78,8 @@ export default function Others({ category_wise_products }) {
         Try our New Dishes..
       </p>
       {homeproducts ? (
+        <>
+        
         <div className={style.wrapper}>
           <Slider {...settings}>
             {homeproducts.map((ele, i) => {
@@ -86,7 +88,7 @@ export default function Others({ category_wise_products }) {
                   className={style.cards}
                   key={i}
                   onClick={() => {
-                    navigateto(ele.attributes.category);
+                    navigateto(ele.attributes.Productname);
                   }}
                 >
                   <Image
@@ -100,9 +102,7 @@ export default function Others({ category_wise_products }) {
                     {ele.attributes.Productname}
                   </p>
                   <div className={style.addsection}>
-                    <p className={style.producttitle} style={gfont.style}>
-                      Price :9$
-                    </p>
+                    
                     <button style={gfont.style} className={style.addbtn}>
                       Add
                     </button>
@@ -112,6 +112,7 @@ export default function Others({ category_wise_products }) {
             })}
           </Slider>
         </div>
+        </>
       ) : (
         <div>
           <p className={style.Notfoundmsg} style={gfont.style}>

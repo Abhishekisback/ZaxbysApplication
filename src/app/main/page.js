@@ -46,7 +46,7 @@ export default async function Maincontent()
       ) : (
         <div className={style.loadingpagerr}>
           <Loaders></Loaders>
-          <p style={gfont.style}>Error loading page please try after sometime</p>
+          
         </div>
       )}
       

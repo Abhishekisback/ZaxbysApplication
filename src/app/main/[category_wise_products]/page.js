@@ -12,13 +12,19 @@ import NextArrow from "./NextArrow";
 import PrevArrow from "./PrevArrow";
 import { useRouter } from "next/navigation";
 import Others from "./Others";
-import image2 from "../../../../public/Images/sad.png"
+import image2 from "../../../../public/Images/sad.png";
 
 // const myfont6 = localfont({ src: "../../fonts/zaxscript-rough.woff" });
 // const myfont3 = localfont({ src: "../../fonts/zaxsans-regular.woff" });
 const gfont = localfont({ src: "../../fonts/Poppins-Regular.ttf" });
 export default function CategoryWiseProducts({ params }) {
   console.log("params", params.category_wise_products.toLowerCase());
+
+  let Cleanedcategory = params.category_wise_products.includes("%20")
+    ? params.category_wise_products.replace(/%20/g, "")
+    : params.category_wise_products;
+
+  console.log("cleaned", Cleanedcategory);
   const [products, setproducts] = useState([]);
 
   const router = useRouter();
@@ -34,7 +40,10 @@ export default function CategoryWiseProducts({ params }) {
           );
           setproducts(res.data.data);
         }
-      }).catch((err)=>{console.log(err)});
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   console.log("products", products);
 
@@ -62,33 +71,34 @@ export default function CategoryWiseProducts({ params }) {
           slidesToShow: 2,
           slidesToScroll: 2,
           infinite: true,
-          
-        }
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          
-        }
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
     <div className={style.container}>
-      <p className={style.categoryname} style={gfont.style}>
-        {params.category_wise_products}
-      </p>
-      {products.length != 0 ? (
+      {products.length!=0 && (
+        <p className={style.categoryname} style={gfont.style}>
+          {params.category_wise_products}
+        </p>
+      )}
+
+      {products.length!=0 && (
         <div className={style.wrapper}>
           <Slider {...settings}>
             {products.map((ele, i) => {
@@ -107,11 +117,13 @@ export default function CategoryWiseProducts({ params }) {
                     height={200}
                     alt="image"
                   ></Image>
-                  <p style={gfont.style}
-                    className={style.producttitle}
-                  >{ele.attributes.Productname}</p>
+                  <p style={gfont.style} className={style.producttitle}>
+                    {ele.attributes.Productname}
+                  </p>
                   <div className={style.addsection}>
-                    <p className={style.producttitle} style={gfont.style}>Price :{ele.attributes.Price}$</p>
+                    <p className={style.producttitle} style={gfont.style}>
+                      Price :{ele.attributes.Price}$
+                    </p>
                     <button style={gfont.style} className={style.addbtn}>
                       Add
                     </button>
@@ -121,23 +133,9 @@ export default function CategoryWiseProducts({ params }) {
             })}
           </Slider>
         </div>
-      ) : (
-        <div>
-          <p className={style.Notfoundmsg} style={gfont.style}>
-            Currently Zax {params.category_wise_products} not found
-            <Image src={image2} width={50} height={50} alt="img" />
-             ...please
-            try after some time
-
-          </p>
-          <p className={style.tryout} style={gfont.style}>
-            There are new dishes available try now ....
-          </p>
-        </div>
       )}
-      <Others 
-         category_wise_products={params.category_wise_products}
-      />
+
+      <Others category_wise_products={params.category_wise_products} />
     </div>
   );
 }
