@@ -16,7 +16,7 @@ import image2 from "../../../../public/Images/sad.png"
 
 // const myfont6 = localfont({ src: "../../fonts/zaxscript-rough.woff" });
 // const myfont3 = localfont({ src: "../../fonts/zaxsans-regular.woff" });
-const gfont = localfont({ src: "../../fonts/Pacifico-Regular.ttf" });
+const gfont = localfont({ src: "../../fonts/Poppins-Regular.ttf" });
 export default function CategoryWiseProducts({ params }) {
   console.log("params", params.category_wise_products.toLowerCase());
   const [products, setproducts] = useState([]);

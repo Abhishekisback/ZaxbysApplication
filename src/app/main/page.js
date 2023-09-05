@@ -9,7 +9,7 @@ import ProductDetailCard from "./ProductDetailCard/page";
 import localfont from "next/font/local";
 import Loaders from "../loader/page";
 
-const gfont = localfont({ src: "../fonts/Pacifico-Regular.ttf" });
+const gfont = localfont({ src: "../fonts/Poppins-Regular.ttf" });
 
 export default async function Maincontent() 
 {

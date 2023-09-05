@@ -3,7 +3,7 @@ import { MakeApiCall } from "../../MakeAPICall";
 import style from "./style.module.css"
 import localfont from "next/font/local"
 
-const gfont=localfont({src:"../../fonts/Pacifico-Regular.ttf"})
+const gfont = localfont({ src: "../../fonts/Poppins-Regular.ttf" });
 
 export default async function VideoSection()
  {

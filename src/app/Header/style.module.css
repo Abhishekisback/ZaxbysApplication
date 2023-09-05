@@ -21,6 +21,7 @@
   text-transform: uppercase;
   color: #0c2340;
   font-size: 20px;
+  font-weight: bolder;
   
 }
 .headerline3 {
@@ -32,7 +33,7 @@
 
 @media screen and (max-width: 780px) {
   .headerline2 {
-    text-transform: lowercase;
+    text-transform: uppercase;
     color: #0c2340;
     font-size: 18px;
   }

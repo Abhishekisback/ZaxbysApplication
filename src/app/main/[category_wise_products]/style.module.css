@@ -126,6 +126,7 @@
 }
 .producttitle {
   font-size: 30px;
+  font-weight: 700;
 }
 
 @media screen and (max-width: 780px) {
@@ -156,6 +157,7 @@
     border-bottom: 3px solid orange;
     border-bottom-right-radius: 5px;
     margin-bottom: 4px;
+    font-weight: 700;
   }
   .wrapper {
     padding: 5px;

@@ -6,7 +6,7 @@ import Loaders from "../loader/page";
 import image2 from "../../../public/Images/waiting.png"
 import Image from "next/image";
 
-const gfont = localfont({ src: "../fonts/Pacifico-Regular.ttf" });
+const gfont = localfont({ src: "../fonts/Poppins-Regular.ttf" });
 
 export default async function Header() {
   let headerdata = await MakeApiCall(

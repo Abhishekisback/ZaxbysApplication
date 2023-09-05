@@ -9,7 +9,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import axios from "axios";
 import image2 from "../../../public/Images/waiting.png";
 
-const gfont = localfont({ src: "../fonts/Pacifico-Regular.ttf" });
+const gfont = localfont({ src: "../fonts/Poppins-Regular.ttf" });
 
 export default function Navbar() {
   const [openmenu, setopenmenu] = useState(false);

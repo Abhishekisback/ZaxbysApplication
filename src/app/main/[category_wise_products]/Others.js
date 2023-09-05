@@ -11,12 +11,9 @@ import "./Slickstyle.css";
 import NextArrow from "./NextArrow";
 import PrevArrow from "./PrevArrow";
 import { useRouter } from "next/navigation";
-const gfont = localfont({ src: "../../fonts/Pacifico-Regular.ttf" });
+const gfont = localfont({ src: "../../fonts/Poppins-Regular.ttf" });
 
-
-export default function Others({category_wise_products}) {
-
-  
+export default function Others({ category_wise_products }) {
   const router = useRouter();
   const [homeproducts, sethomeproducts] = useState([]);
   async function gethomeproducts() {
@@ -56,25 +53,23 @@ export default function Others({category_wise_products}) {
           slidesToShow: 2,
           slidesToScroll: 2,
           infinite: true,
-          
-        }
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          
-        }
+        },
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -91,7 +86,7 @@ export default function Others({category_wise_products}) {
                   className={style.cards}
                   key={i}
                   onClick={() => {
-                    navigateto(ele.attributes.Productname);
+                    navigateto(ele.attributes.category);
                   }}
                 >
                   <Image
@@ -101,9 +96,13 @@ export default function Others({category_wise_products}) {
                     height={200}
                     alt="image"
                   ></Image>
-                  <p className={style.producttitle}  style={gfont.style}>{ele.attributes.Productname}</p>
+                  <p className={style.producttitle} style={gfont.style}>
+                    {ele.attributes.Productname}
+                  </p>
                   <div className={style.addsection}>
-                    <p className={style.producttitle}  style={gfont.style}>Price :9$</p>
+                    <p className={style.producttitle} style={gfont.style}>
+                      Price :9$
+                    </p>
                     <button style={gfont.style} className={style.addbtn}>
                       Add
                     </button>

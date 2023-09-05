@@ -5,7 +5,7 @@ import Image from "next/image";
 import style from "./style.module.css";
 import localfont from "next/font/local";
 import emoji from "../../../../../public/Images/sad.png";
-const gfont = localfont({ src: "../../../fonts/Pacifico-Regular.ttf" });
+const gfont = localfont({ src: "../../../fonts/Poppins-Regular.ttf" });
 function Page({ params }) {
   const [product, setproduct] = useState({});
 

@@ -4,7 +4,7 @@ import style from "./style.module.css"
 import localfont from "next/font/local";
 // const myfont4 = localfont({ src: "../../fonts/zaxscript-regular.woff" });
 // const myfont3 = localfont({ src: "../../fonts/zaxsans-regular.woff" });
-const gfont=localfont({src:"../../fonts/Pacifico-Regular.ttf"})
+const gfont=localfont({src:"../../fonts/Poppins-Regular.ttf"})
 
 export default async function FeedingCrowdComponent() {
 
