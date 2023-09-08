@@ -21,4 +21,5 @@
   }
   .productimage {
     border-radius: 25px;
+    object-fit: cover;
   }

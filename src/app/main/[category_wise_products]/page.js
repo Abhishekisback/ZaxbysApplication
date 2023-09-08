@@ -12,12 +12,14 @@ import NextArrow from "./NextArrow";
 import PrevArrow from "./PrevArrow";
 import { useRouter } from "next/navigation";
 import Others from "./Others";
-import image2 from "../../../../public/Images/sad.png";
-
-// const myfont6 = localfont({ src: "../../fonts/zaxscript-rough.woff" });
-// const myfont3 = localfont({ src: "../../fonts/zaxsans-regular.woff" });
 const gfont = localfont({ src: "../../fonts/Poppins-Regular.ttf" });
+
 export default function CategoryWiseProducts({ params }) {
+  useEffect(() => {
+    window.scroll(0, 0);
+    getproducts();
+  }, []);
+
   console.log("params", params.category_wise_products.toLowerCase());
 
   let Cleanedcategory = params.category_wise_products.includes("%20")
@@ -26,12 +28,12 @@ export default function CategoryWiseProducts({ params }) {
 
   console.log("cleaned", Cleanedcategory);
   const [products, setproducts] = useState([]);
-
   const router = useRouter();
-  async function getproducts() {
-    await axios
+
+  function getproducts() {
+    axios
       .get(
-        `https://zaxbys-strapi.onrender.com/api/categorywiseproductlists?filters[category][$eq]=${params.category_wise_products.toLowerCase()}`
+        `https://zaxbys-strapi.onrender.com/api/categorywiseproductlists?filters[category][$eq]=${Cleanedcategory.toLowerCase()}`
       )
       .then((res) => {
         if (res.status === 200 && res.data) {
@@ -48,20 +50,18 @@ export default function CategoryWiseProducts({ params }) {
   console.log("products", products);
 
   function navigateto(path) {
+    window.scroll(0,0)
     console.log("path", path);
     router.push(`${params.category_wise_products}/${path}`);
   }
-  useEffect(() => {
-    getproducts();
-  }, []);
 
   const settings = {
     dots: false,
     arrows: true,
     infinite: true,
-    speed: 1000,
-    slidesToShow: 2,
-    slidesToScroll: 2,
+    speed: 800,
+    slidesToShow: 3,
+    slidesToScroll: 1,
     nextArrow: <NextArrow></NextArrow>,
     prevArrow: <PrevArrow></PrevArrow>,
     responsive: [
@@ -92,36 +92,38 @@ export default function CategoryWiseProducts({ params }) {
 
   return (
     <div className={style.container}>
-      {products.length!=0 && (
+      {products.length != 0 && (
         <p className={style.categoryname} style={gfont.style}>
           {params.category_wise_products}
         </p>
       )}
 
-      {products.length!=0 && (
-        <div className={style.wrapper}>
+      {products.length != 0 && (
+        <>
+        <div className={style.wrapper} >
           <Slider {...settings}>
             {products.map((ele, i) => {
               return (
                 <div
-                  className={style.cards}
+                className={style.cards}
+                
                   key={i}
                   onClick={() => {
-                    navigateto(ele.attributes.Productname);
+                    navigateto(ele.id);
                   }}
                 >
                   <Image
                     src={ele.attributes.imageurl}
                     className={style.prodimage}
-                    width={200}
-                    height={200}
+                    width={150}
+                    height={130}
                     alt="image"
                   ></Image>
                   <p style={gfont.style} className={style.producttitle}>
                     {ele.attributes.Productname}
                   </p>
                   <div className={style.addsection}>
-                    <p className={style.producttitle} style={gfont.style}>
+                    <p className={style.productprice} style={gfont.style}>
                       Price :{ele.attributes.Price}$
                     </p>
                     <button style={gfont.style} className={style.addbtn}>
@@ -133,6 +135,7 @@ export default function CategoryWiseProducts({ params }) {
             })}
           </Slider>
         </div>
+        </>
       )}
 
       <Others category_wise_products={params.category_wise_products} />

@@ -45,6 +45,7 @@
   color: white;
   font-size: 18px;
   font-weight: bold;
+  cursor: pointer;
 }
 .selectstore {
   font-size: 23px;
@@ -109,7 +110,9 @@
   }
   .logoimg {
     width: 100px;
-    height: 45x;
+    height: 35x;
+    object-fit: contain;
+
   }
 }
 

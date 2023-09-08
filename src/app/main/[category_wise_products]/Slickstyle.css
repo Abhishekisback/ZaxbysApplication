@@ -1,5 +1,22 @@
 
-.slick-slide>div{
-    margin: 0 30px;
-  
+.slick-slide > div {
+  margin: 0 30px;
+  margin-top: 20px;
+ 
+}
+
+.slick-slider{
+  height: 370px;
+}
+
+@media screen and (max-width: 1024px) {
+  .slick-slide > div {
+    width: 200px;
+    margin-left: 40px;
+    margin-right: 40px;
   }
+  .slick-slider{
+    height: 320px;
+  }
+}
+

@@ -6,7 +6,7 @@ export default function PrevArrow({onClick})
 {
   return(
     <div onClick={onClick} className={style.prevArrow} >
-      <Image src={nextarrow} alt='Pre-Arrow' width={50} height={50}></Image>
+      <Image className={style.arrowimg} src={nextarrow} alt='Pre-Arrow' width={30} height={30}></Image>
     </div>
   )
 }

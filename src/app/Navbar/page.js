@@ -7,6 +7,7 @@ import localfont from "next/font/local";
 import locator from "../../../public/Images/location.png";
 import { FaBars, FaTimes } from "react-icons/fa";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import image2 from "../../../public/Images/waiting.png";
 
 const gfont = localfont({ src: "../fonts/Poppins-Regular.ttf" });
@@ -14,6 +15,7 @@ const gfont = localfont({ src: "../fonts/Poppins-Regular.ttf" });
 export default function Navbar() {
   const [openmenu, setopenmenu] = useState(false);
   const [navbardata, setnavbardata] = useState();
+  const navigateto = useRouter();
   function getNavbarfields() {
     axios
       .get("https://zaxbys-strapi.onrender.com/api/get-navbar-fields")
@@ -39,6 +41,12 @@ export default function Navbar() {
   function closemobilemenu() {
     setopenmenu(false);
   }
+
+  function Navigatetohome() {
+    setopenmenu(false);
+    navigateto.push("/main");
+  }
+
   return (
     <>
       {navbardata?.data[0]?.attributes ? (
@@ -55,16 +63,19 @@ export default function Navbar() {
             )}
           </div>
           <Image
-           className={style.logoimg}
+            className={style.logoimg}
             src={navbardata.data[0].attributes.NavbarArray.logo_img_url}
             width={150}
             height={60}
             alt="Zaxbys Logo img"
+            onClick={Navigatetohome}
           />
-          <div
-            className={openmenu ? style.navmenumobile : style.navmenus}
-          >
-            <button className={style.startorderingbtn} style={gfont.style}>
+          <div className={openmenu ? style.navmenumobile : style.navmenus}>
+            <button
+              className={style.startorderingbtn}
+              style={gfont.style}
+              onClick={Navigatetohome}
+            >
               {navbardata.data[0].attributes.NavbarArray.startorderbtn}
             </button>
             {navbardata.data[0].attributes.NavbarArray.navitems.map(
@@ -91,7 +102,7 @@ export default function Navbar() {
         </nav>
       ) : (
         <div className={style.Loaders}>
-         <p style={gfont.style} >Loading...</p>
+          <p style={gfont.style}>Loading...</p>
         </div>
       )}
     </>

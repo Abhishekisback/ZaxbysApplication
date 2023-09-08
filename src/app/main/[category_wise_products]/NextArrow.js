@@ -6,7 +6,7 @@ export default function NextArrow({onClick})
 {
   return(
     <div onClick={onClick} className={style.NextArrow}>
-      <Image src={nextarrow} alt='Next-Arrow' width={50} height={50}></Image>
+      <Image className={style.arrowimg} src={nextarrow} alt='Next-Arrow' width={30} height={30}></Image>
     </div>
   )
 }

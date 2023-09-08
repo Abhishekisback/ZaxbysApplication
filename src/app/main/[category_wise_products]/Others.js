@@ -9,40 +9,58 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "./Slickstyle.css";
 import NextArrow from "./NextArrow";
-import PrevArrow from "./PrevArrow";
 import { useRouter } from "next/navigation";
+import PrevArrow from "./PrevArrow";
+
 const gfont = localfont({ src: "../../fonts/Poppins-Regular.ttf" });
 
 export default function Others({ category_wise_products }) {
+  useEffect(() => {
+    window.scroll(0, 0);
+    getproducts();
+  }, []);
+
+  console.log("params", category_wise_products.toLowerCase());
+
+  let Cleanedcategory =category_wise_products.includes("%20")
+    ? category_wise_products.replace(/%20/g, "")
+    :category_wise_products;
+
+  console.log("cleaned", Cleanedcategory);
+  const [products, setproducts] = useState([]);
   const router = useRouter();
-  const [homeproducts, sethomeproducts] = useState([]);
-  async function gethomeproducts() {
-    await axios
-      .get("https://zaxbys-strapi.onrender.com/api/home-page-products")
+
+  function getproducts() {
+    axios
+      .get(
+        "https://zaxbys-strapi.onrender.com/api/categorywiseproductlists"
+      )
       .then((res) => {
         if (res.status === 200 && res.data) {
-          sethomeproducts(res.data?.data);
-          console.log(res.data.data);
+          console.log(
+            res.data.data.map((ele) => console.log(ele.attributes.Productname))
+          );
+          setproducts(res.data.data);
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   }
+  console.log("products", products);
 
   function navigateto(path) {
+    window.scroll(0,0)
     console.log("path", path);
     router.push(`${category_wise_products}/${path}`);
   }
-  useEffect(() => {
-    gethomeproducts();
-  }, []);
-  console.log("homeprod", homeproducts);
 
   const settings = {
     dots: false,
     arrows: true,
     infinite: true,
-    speed: 1000,
-    slidesToShow: 2,
+    speed: 800,
+    slidesToShow: 3,
     slidesToScroll: 2,
     nextArrow: <NextArrow></NextArrow>,
     prevArrow: <PrevArrow></PrevArrow>,
@@ -50,7 +68,7 @@ export default function Others({ category_wise_products }) {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 2,
           infinite: true,
         },
@@ -73,36 +91,41 @@ export default function Others({ category_wise_products }) {
   };
 
   return (
-    <>
-      <p className={style.categoryname} style={gfont.style}>
-        Try our New Dishes..
-      </p>
-      {homeproducts ? (
+    <div className={style.container}>
+      {products.length != 0 && (
+        <p className={style.categoryname2} style={gfont.style}>
+          Other Dishes
+        </p>
+      )}
+
+      {products.length != 0 && (
         <>
-        
-        <div className={style.wrapper}>
+        <div className={style.wrapper} >
           <Slider {...settings}>
-            {homeproducts.map((ele, i) => {
+            {products.map((ele, i) => {
               return (
                 <div
-                  className={style.cards}
+                className={style.cards}
+               
                   key={i}
                   onClick={() => {
-                    navigateto(ele.attributes.Productname);
+                    navigateto(ele.id);
                   }}
                 >
                   <Image
                     src={ele.attributes.imageurl}
                     className={style.prodimage}
-                    width={200}
-                    height={200}
+                    width={150}
+                    height={130}
                     alt="image"
                   ></Image>
-                  <p className={style.producttitle} style={gfont.style}>
+                  <p style={gfont.style} className={style.producttitle}>
                     {ele.attributes.Productname}
                   </p>
                   <div className={style.addsection}>
-                    
+                    <p className={style.productprice} style={gfont.style}>
+                      Price :{ele.attributes.Price}$
+                    </p>
                     <button style={gfont.style} className={style.addbtn}>
                       Add
                     </button>
@@ -113,13 +136,9 @@ export default function Others({ category_wise_products }) {
           </Slider>
         </div>
         </>
-      ) : (
-        <div>
-          <p className={style.Notfoundmsg} style={gfont.style}>
-            Unable to load products....!!!
-          </p>
-        </div>
       )}
-    </>
+
+      
+    </div>
   );
 }
