@@ -8,6 +8,8 @@ import ProductDetailCard from "./ProductDetailCard/page";
 
 import localfont from "next/font/local";
 import Loaders from "../loader/page";
+import Header from "../Header/page";
+import Navbar from "../Navbar/page";
 
 const gfont = localfont({ src: "../fonts/Poppins-Regular.ttf" });
 
@@ -24,6 +26,8 @@ export default async function Maincontent()
 
   return (
     <>
+    <Header/>
+    <Navbar/>
     <VideoSection/>
     <Mainheader/>
 

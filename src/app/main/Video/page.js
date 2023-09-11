@@ -16,7 +16,7 @@ export default async function VideoSection()
     <>
      {
       introvideo?.data?.[0]?.attributes?.video_url? (
-        <video className={style.video} playsInline autoPlay loop>
+        <video className={style.video} playsInline autoPlay loop >
         <source src={introvideo.data[0].attributes.video_url}></source>
       </video>
       ):(

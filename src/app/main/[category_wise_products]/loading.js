@@ -2,7 +2,7 @@ import React from 'react'
 
 function Loading() {
     return (
-        <div>
+        <div style={{textAlign:"center"}}>
             <p>Loading</p>
         </div>
     )

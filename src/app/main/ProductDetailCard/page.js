@@ -16,6 +16,7 @@ export default function ProductDetailCard({ category, imageurl, title, key }) {
   
 
   function CategoryRelatedProducts() {
+    
     NavigateTo.push(`/main/${category}`);
   }
 

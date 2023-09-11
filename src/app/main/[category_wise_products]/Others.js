@@ -14,26 +14,19 @@ import PrevArrow from "./PrevArrow";
 
 const gfont = localfont({ src: "../../fonts/Poppins-Regular.ttf" });
 
-export default function Others({ category_wise_products }) {
+export default function Others({ category_wise_products, category, id }) {
   useEffect(() => {
     window.scroll(0, 0);
     getproducts();
   }, []);
 
-  console.log("params", category_wise_products.toLowerCase());
-
-  let Cleanedcategory =category_wise_products.includes("%20")
-    ? category_wise_products.replace(/%20/g, "")
-    :category_wise_products;
-
-  console.log("cleaned", Cleanedcategory);
   const [products, setproducts] = useState([]);
   const router = useRouter();
 
   function getproducts() {
     axios
       .get(
-        "https://zaxbys-strapi.onrender.com/api/categorywiseproductlists"
+        `https://zaxbys-strapi.onrender.com/api/categorywiseproductlists?filters[category][$eq]=${category}`
       )
       .then((res) => {
         if (res.status === 200 && res.data) {
@@ -50,7 +43,7 @@ export default function Others({ category_wise_products }) {
   console.log("products", products);
 
   function navigateto(path) {
-    window.scroll(0,0)
+    window.scroll(0, 0);
     console.log("path", path);
     router.push(`${category_wise_products}/${path}`);
   }
@@ -91,54 +84,51 @@ export default function Others({ category_wise_products }) {
   };
 
   return (
-    <div className={style.container}>
+    <div className={style.subcontainer}>
       {products.length != 0 && (
         <p className={style.categoryname2} style={gfont.style}>
-          Other Dishes
+          {category}
         </p>
       )}
-
+      <p>{id}</p>
       {products.length != 0 && (
         <>
-        <div className={style.wrapper} >
-          <Slider {...settings}>
-            {products.map((ele, i) => {
-              return (
-                <div
-                className={style.cards}
-               
-                  key={i}
-                  onClick={() => {
-                    navigateto(ele.id);
-                  }}
-                >
-                  <Image
-                    src={ele.attributes.imageurl}
-                    className={style.prodimage}
-                    width={150}
-                    height={130}
-                    alt="image"
-                  ></Image>
-                  <p style={gfont.style} className={style.producttitle}>
-                    {ele.attributes.Productname}
-                  </p>
-                  <div className={style.addsection}>
-                    <p className={style.productprice} style={gfont.style}>
-                      Price :{ele.attributes.Price}$
+          <div className={style.wrapper}>
+            <Slider {...settings}>
+              {products.map((ele, i) => {
+                return (
+                  <div
+                    className={style.cards}
+                    key={i}
+                    onClick={() => {
+                      navigateto(ele.id);
+                    }}
+                  >
+                    <Image
+                      src={ele.attributes.imageurl}
+                      className={style.prodimage}
+                      width={150}
+                      height={130}
+                      alt="image"
+                    ></Image>
+                    <p style={gfont.style} className={style.producttitle}>
+                      {ele.attributes.Productname}
                     </p>
-                    <button style={gfont.style} className={style.addbtn}>
-                      Add
-                    </button>
+                    <div className={style.addsection}>
+                      <p className={style.productprice} style={gfont.style}>
+                        Price :{ele.attributes.Price}$
+                      </p>
+                      <button style={gfont.style} className={style.addbtn}>
+                        Add
+                      </button>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-          </Slider>
-        </div>
+                );
+              })}
+            </Slider>
+          </div>
         </>
       )}
-
-      
     </div>
   );
 }

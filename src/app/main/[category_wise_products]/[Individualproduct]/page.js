@@ -5,6 +5,8 @@ import Image from "next/image";
 import style from "./style.module.css";
 import localfont from "next/font/local";
 import { useRouter } from "next/navigation";
+import Header from "@/app/Header/page";
+import Navbar from "@/app/Navbar/page";
 
 const gfont = localfont({ src: "../../../fonts/Poppins-Regular.ttf" });
 
@@ -36,6 +38,8 @@ function Page({ params }) {
 
   return (
     <div className={style.content}>
+      <Header/>
+      <Navbar/>
       {product === undefined ? (
         <>
           <p style={{ ...gfont.style, textAlign: "center", marginTop: "50px" }}>

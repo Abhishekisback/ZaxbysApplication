@@ -22,7 +22,7 @@ export default function Navbar() {
       .then((res) => {
         if (res.status === 200) {
           setnavbardata(res?.data);
-          //console.log(navbardata.data[0].attributes.NavbarArray.startorderbtn);
+          console.log(navbardata.data[0].attributes.NavbarArray.startorderbtn);
           res?.data?.data[0]?.attributes?.NavbarArray?.navitems.map((ele, i) =>
             console.log(ele)
           );
