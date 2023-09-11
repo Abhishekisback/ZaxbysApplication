@@ -147,7 +147,7 @@ export default function CategoryWiseProducts({ params }) {
         <div className={style.navmenus}>
           {catgeorymenu.map((item, i) => {
             return (
-              <div>
+              <div key={i}>
                 <Link className={style.navlinks} href={`#${i}`}>
                   {item}
                 </Link>
@@ -204,7 +204,7 @@ export default function CategoryWiseProducts({ params }) {
 
         {catgeorymenu.map((categories, i) => {
           return (
-            <div id={i}>
+            <div key={i} id={i}>
               <Others
                 category_wise_products={params.category_wise_products}
                 category={categories}
