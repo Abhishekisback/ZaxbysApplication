@@ -22,7 +22,7 @@ export default function CategoryWiseProducts({ params }) {
     window.scroll(0, 0);
     getproducts();
     getCategoryNavmenus();
-  }, [getCategoryNavmenus,getproducts]);
+  }, []);
 
   console.log("params", params.category_wise_products);
 
