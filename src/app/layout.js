@@ -1,8 +1,9 @@
+"use client"
 import { Inter } from "next/font/google";
 import Header from "./Header/page";
 import Navbar from "./Navbar/page";
-import "./globals.css"
-
+import "./globals.css";
+import { usePathname } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,12 +13,16 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const pathname = usePathname();
+  const  ishomepage=pathname === "/" || pathname === "/main"
   return (
     <html lang="en">
-      <body className={inter.className} >
-      
-        {children}
-   
+      <body className={inter.className}>
+        {
+          ishomepage&& <Header/>
+        }
+       <Navbar></Navbar>
+       {children}
       </body>
     </html>
   );

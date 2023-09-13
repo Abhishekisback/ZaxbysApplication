@@ -2,9 +2,7 @@ import { MakeApiCall } from "../MakeAPICall";
 import style from "./style.module.css";
 import SignupLoginbtn from "../login-signup-btn/page";
 import localfont from "next/font/local";
-import Loaders from "../loader/page";
-import image2 from "../../../public/Images/waiting.png";
-import Image from "next/image";
+
 
 const gfont = localfont({ src: "../fonts/Poppins-Regular.ttf" });
 
@@ -21,7 +19,7 @@ export default async function Header() {
           <p style={gfont.style}>Not Able to Find</p>
         </>
       ) : (
-        <>
+        <div >
           {headerdata?.data?.[0]?.attributes?.Headerdata ? (
             <div className={style.headerSection}>
               <h3 style={gfont.style} className={style.headerline1}>
@@ -45,10 +43,10 @@ export default async function Header() {
             </div>
           ) : (
             <div style={gfont.style} className={style.headerSection}>
-              <Loaders />
+             Loading....
             </div>
           )}
-        </>
+        </div>
       )}
     </>
   );

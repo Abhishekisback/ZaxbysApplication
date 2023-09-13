@@ -7,8 +7,6 @@ export default function HomPage() {
   return (
     <>
       <>
-        {/* <Header />
-        <Navbar /> */}
         <Maincontent />
        
       </>

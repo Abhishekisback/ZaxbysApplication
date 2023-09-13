@@ -7,15 +7,18 @@ import localfont from "next/font/local";
 import locator from "../../../public/Images/location.png";
 import { FaBars, FaTimes } from "react-icons/fa";
 import axios from "axios";
-import { useRouter } from "next/navigation";
-import image2 from "../../../public/Images/waiting.png";
+import { useRouter,usePathname } from "next/navigation";
+
 
 const gfont = localfont({ src: "../fonts/Poppins-Regular.ttf" });
 
-export default function Navbar() {
+export default function Navbar({navarray}) {
   const [openmenu, setopenmenu] = useState(false);
   const [navbardata, setnavbardata] = useState();
   const navigateto = useRouter();
+  const pathname=usePathname();
+  const ishomepage=pathname === "/" || pathname === "/main"
+  
   function getNavbarfields() {
     axios
       .get("https://zaxbys-strapi.onrender.com/api/get-navbar-fields")
@@ -50,7 +53,7 @@ export default function Navbar() {
   return (
     <>
       {navbardata?.data[0]?.attributes ? (
-        <nav className={style.navbar}>
+        <nav className={ ishomepage  ?  style.navbar :style.fixednavbar  }>
           <div className={style.menuicon}>
             {openmenu ? (
               <FaTimes
@@ -65,8 +68,8 @@ export default function Navbar() {
           <Image
             className={style.logoimg}
             src={navbardata.data[0].attributes.NavbarArray.logo_img_url}
-            width={150}
-            height={60}
+            width={130}
+            height={50}
             alt="Zaxbys Logo img"
             onClick={Navigatetohome}
           />

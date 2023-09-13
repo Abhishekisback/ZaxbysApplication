@@ -22,9 +22,11 @@ export default async function FeedingCrowdComponent() {
             {feedingcrowd?.data?.[0]?.attributes?.feedingcrowdsection?.feedingmenu}
           </span>
         </p>
+        <a href="/main/Food">
         <button className={style.ordernow} style={gfont.style}>
           {feedingcrowd?.data?.[0]?.attributes?.feedingcrowdsection?.btn_order}
         </button>
+        </a>
       </div>
         ):(
           <div>

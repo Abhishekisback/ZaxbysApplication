@@ -16,8 +16,6 @@ import Link from "next/link";
 const gfont = localfont({ src: "../../fonts/Poppins-Regular.ttf" });
 
 export default function CategoryWiseProducts({ params }) {
-  const [openmenu, setopenmenu] = useState(false);
-
   useEffect(() => {
     window.scroll(0, 0);
     getproducts();
@@ -47,7 +45,7 @@ export default function CategoryWiseProducts({ params }) {
           console.log(
             res.data.data.map((ele) => console.log(ele.attributes.Productname))
           );
-
+          console.log(res.data);
           setproducts(res.data.data);
         }
       })
@@ -125,30 +123,11 @@ export default function CategoryWiseProducts({ params }) {
   return (
     <>
       <nav className={style.navbar}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Image
-            className={style.logoimg}
-            src="https://res.cloudinary.com/dxzixgrne/image/upload/v1693539585/zaxbyslogo_shvqnj.png"
-            width={150}
-            height={60}
-            alt="Zaxbys Logo img"
-          />
-          <div>
-            <p className={style.carve} style={gfont.style}>One Stop For All your Cravings..</p>
-          </div>
-        </div>
-
         <div className={style.navmenus}>
           {catgeorymenu.map((item, i) => {
             return (
               <div key={i}>
-                <Link className={style.navlinks} href={`#${i}`}>
+                <Link className={style.navlinks} href={`#${item}`}>
                   {item}
                 </Link>
               </div>
@@ -156,10 +135,12 @@ export default function CategoryWiseProducts({ params }) {
           })}
         </div>
       </nav>
+      <div style={{backgroundColor:"#d4e0f0",height:"auto",width:"100%"}}>
       <div className={style.container}>
         {products.length != 0 && (
           <p className={style.categoryname} style={gfont.style}>
             {params.category_wise_products}
+            
           </p>
         )}
 
@@ -201,10 +182,10 @@ export default function CategoryWiseProducts({ params }) {
             </div>
           </>
         )}
-
-        {catgeorymenu.map((categories, i) => {
+       
+       {catgeorymenu.map((categories, i) => {
           return (
-            <div key={i} id={i}>
+            <div style={{marginTop:"50px"}} key={i} id={categories}>
               <Others
                 category_wise_products={params.category_wise_products}
                 category={categories}
@@ -212,6 +193,7 @@ export default function CategoryWiseProducts({ params }) {
             </div>
           );
         })}
+      </div>
       </div>
     </>
   );

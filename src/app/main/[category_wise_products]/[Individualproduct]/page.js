@@ -38,8 +38,7 @@ function Page({ params }) {
 
   return (
     <div className={style.content}>
-      <Header/>
-      <Navbar/>
+     
       {product === undefined ? (
         <>
           <p style={{ ...gfont.style, textAlign: "center", marginTop: "50px" }}>

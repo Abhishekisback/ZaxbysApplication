@@ -1,4 +1,4 @@
-import Loaders from "@/app/loader/page";
+
 import { MakeApiCall } from "../../MakeAPICall";
 import style from "./style.module.css"
 import localfont from "next/font/local"
@@ -16,12 +16,12 @@ export default async function VideoSection()
     <>
      {
       introvideo?.data?.[0]?.attributes?.video_url? (
-        <video className={style.video} playsInline autoPlay loop >
+        <video className={style.video} playsInline  autoPlay loop >
         <source src={introvideo.data[0].attributes.video_url}></source>
       </video>
       ):(
        <div className={style.VideoSection} >
-        <Loaders></Loaders>
+        
         <p style={gfont.style}>Loading Behind The scene video...</p>
         
        </div>

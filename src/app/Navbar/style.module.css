@@ -2,15 +2,36 @@
   display: none;
 }
 .navbar {
+  /* position: fixed;
+  z-index: 999; */
   display: flex;
   text-align: center;
   align-items: center;
   width: 100vw;
   justify-content: space-around;
   padding: 10px;
-  height: 80px;
+  height: 60px;
+  background-color: white;
   box-shadow: 0px 6px 3px rgb(156, 155, 155);
+  /* margin-top: 242px; */
 }
+
+.fixednavbar
+{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  width: 100vw;
+  justify-content: space-around;
+  padding: 10px;
+  height: 60px;
+  background-color: white;
+  box-shadow: 0px 6px 3px rgb(156, 155, 155);
+  position: fixed;
+  z-index: 1;
+}
+
+
 .navmenus {
   display: flex;
   align-items: center;
@@ -67,7 +88,7 @@
   
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 1020px) {
   .menuicon {
     display: block;
     position: absolute;
@@ -87,32 +108,44 @@
     background-color: white;
     align-items: flex-start;
     text-align: justify;
+   
+  }
+  .fixednavbar{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 5px;
+    height: max-content;
+    background-color: white;
+    align-items: flex-start;
+    text-align: justify;
     position: relative;
+   
   }
   .navmenumobile {
     display: flex;
     flex-direction: column;
     gap: 20px;
-
-    background-color: white;
+    background-color: white; 
+    
   }
 
   .navlink {
     color: #0c2340;
     padding: 10px;
     width: 100%;
-    font-size: 18px;
+    font-size: 16px;
   }
   .selectstore {
     font-size: 18px;
     text-align: justify;
     margin-left: 10px;
   }
-  .logoimg {
-    width: 100px;
-    height: 35x;
-    object-fit: contain;
-
+  .logoimg
+  {
+ width: 100px;
+ height: 50px;
+ object-fit: contain;
   }
 }
 

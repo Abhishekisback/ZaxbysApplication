@@ -84,9 +84,9 @@ export default function Others({ category_wise_products, category, id }) {
   };
 
   return (
-    <div className={style.subcontainer}>
+    <div >
       {products.length != 0 && (
-        <p className={style.categoryname2} style={gfont.style}>
+        <p className={style.categoryname} style={gfont.style}>
           {category}
         </p>
       )}

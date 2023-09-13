@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 import style from "./style.module.css";
 import VideoSection from "./Video/page";
 import Mainheader from "./Mainheader/page";
@@ -7,14 +7,12 @@ import { MakeApiCall } from "../MakeAPICall";
 import ProductDetailCard from "./ProductDetailCard/page";
 
 import localfont from "next/font/local";
-import Loaders from "../loader/page";
-import Header from "../Header/page";
-import Navbar from "../Navbar/page";
+import Footer from "./Footer/page";
+
 
 const gfont = localfont({ src: "../fonts/Poppins-Regular.ttf" });
 
-export default async function Maincontent() 
-{
+export default async function Maincontent() {
   let homeproducts = await MakeApiCall(
     "https://zaxbys-strapi.onrender.com/api/home-page-products",
     "GET"
@@ -25,11 +23,9 @@ export default async function Maincontent()
   homeproducts?.data?.map((prod) => console.log(prod.attributes.imageurl));
 
   return (
-    <>
-    <Header/>
-    <Navbar/>
-    <VideoSection/>
-    <Mainheader/>
+    <div >
+      <VideoSection />
+      <Mainheader />
 
       {homeproducts?.data ? (
         <div className={style.homeproductspage}>
@@ -49,14 +45,11 @@ export default async function Maincontent()
         </div>
       ) : (
         <div className={style.loadingpagerr}>
-          <Loaders></Loaders>
-          
+          {/* <Loaders></Loaders> */}
+          <p>Loading..</p>
         </div>
       )}
-      
-    </>
+      <Footer></Footer>
+    </div>
   );
 }
-
-
-

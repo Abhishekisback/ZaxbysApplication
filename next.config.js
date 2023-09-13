@@ -6,6 +6,7 @@ const nextConfig = {
       "fakestoreapi.com",
       "res.cloudinary.com",
       "zaxbys-strapi.onrender.com",
+      "youtube.com"
     ],
   },
 };

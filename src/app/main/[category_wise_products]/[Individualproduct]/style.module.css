@@ -37,7 +37,8 @@
   border: 3px solid white;
 }
 .content{
-  height: 100vh;
+  margin-top: 150px;
+  height: max-content;
 }
 
 .productdesc{
@@ -77,13 +78,13 @@
 
 @media screen and (max-width:780px) {
   .mainwrapper{
-    width: auto;
+    width: 250px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: auto;
-    margin-left: 0;
-    margin-right: 0;
+    margin: auto;
+    margin-top: 30px;
 
   }
   .descwrapper,.product{
@@ -104,6 +105,15 @@
 .onerror{
   font-size: 18px;
 }
-
+.productimg{
+  width: 200px;
+  height: 200px;
+}
+.title{
+  margin-left: -20px;
+}
+.content{
+  margin-top: 50px;
+}
 
 }
