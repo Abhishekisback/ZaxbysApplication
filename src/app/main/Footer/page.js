@@ -1,5 +1,3 @@
-// components/Footer.js
-
 import React from "react";
 import style from "./style.module.css";
 import {
@@ -14,17 +12,17 @@ const gfont = localfont({ src: "../../fonts/Poppins-Regular.ttf" });
 const Footer = () => {
   return (
     <div className={style.footersection}>
-      <div style={{ ...gfont.style, width: "400px", textAlign: "justify",marginTop:"30px" }}>
+      <div style={{ ...gfont.style, width: "400px", textAlign: "justify", marginTop: "30px" }}>
         <div>
           <h1> About Us </h1>
         </div>
-        <br/>
+        <br />
         <div>
-          Zaxby's is known for its diverse menu featuring various chicken
+          Zaxby&apos;s is known for its diverse menu featuring various chicken
           options. Their signature items include hand-breaded chicken fingers,
           traditional and boneless chicken wings, chicken sandwiches, and
           salads. Customers can choose from a range of sauces and dressings to
-          customize their orders. Zaxby's offers a unique Southern flavor
+          customize their orders. Zaxby&apos;s offers a unique Southern flavor
           experience, with a mix of savory and spicy flavors that cater to a
           wide range of tastes. The food is often described as flavorful and
           satisfying.
@@ -37,8 +35,8 @@ const Footer = () => {
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-          <a className={style.links} href="">FAQ's</a>
-          <a  className={style.links}  href="">Terms and Conditions</a>
+          <a className={style.links} href="">FAQ&apos;s</a>
+          <a className={style.links} href="">Terms and Conditions</a>
           <a className={style.links} href="">Privacy Policy</a>
         </div>
 
@@ -84,7 +82,7 @@ const Footer = () => {
 
       <div className={style.contactsec}>
         <div>
-          <h2  style={gfont.style}>Contact Us</h2>
+          <h2 style={gfont.style}>Contact Us</h2>
         </div>
         <div>
           <p>Ph : +91 9611346606</p>
