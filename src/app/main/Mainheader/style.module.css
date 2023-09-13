@@ -1,7 +1,7 @@
 .maintitle {
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-end;
   width: 100vw;
   align-items: center;
   height: 280px;

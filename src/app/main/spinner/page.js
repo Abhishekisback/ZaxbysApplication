@@ -3,7 +3,7 @@ import React,{useState} from 'react';
 import localfont from "next/font/local";
 import { BeatLoader } from "react-spinners";
 
-const gfont = localfont({ src: "./fonts/Poppins-Regular.ttf" });
+
 
 export default function Loading() {
     const [loading,setloading]=useState(true)
