@@ -36,10 +36,14 @@ const Footer = () => {
           <button
             className={style.confirmbtn}
             onClick={() => {
-              navigate.push(
-                "https://www.linkedin.com/in/abhishek-y-88615b216/"
-              );
-            }}
+                toast.dismiss()
+                const newWindow = window.open(
+                    "https://www.linkedin.com/in/abhishek-y-88615b216/",
+                    "_blank" // This opens the link in a new window or tab
+                  );
+                  if (newWindow) {
+                    newWindow.focus(); // Focus on the new window/tab
+                  }}}
           >
             Confirm
           </button>
