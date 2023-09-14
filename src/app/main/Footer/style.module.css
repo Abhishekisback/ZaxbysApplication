@@ -6,6 +6,7 @@
   flex-direction: row;
   justify-content: space-around;
   color: white;
+  height: 400px;
 }
 
 .links {
@@ -72,6 +73,15 @@
   {
     cursor: pointer;
   }
+
+  .copyright{
+   text-align: center;
+    margin-top: 0px;
+    color: white;
+    margin-bottom: 100px;
+  }
+
+
 @media screen and (max-width: 780px) {
   .footersection {
     width: 100%;
