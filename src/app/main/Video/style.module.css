@@ -5,6 +5,8 @@
   margin-top: 5px;
 }
 
+
+
 @media screen and (max-width: 780px) {
   .video {
     height: 450px;
@@ -20,4 +22,18 @@
   align-items: center;
   display: flex;
   justify-content: center;
+}
+/* Hide the default video controls */
+.video::-webkit-media-controls {
+  display: none;
+}
+
+/* For Firefox */
+.video::-webkit-media-controls-panel {
+  display: none !important;
+}
+
+/* For Microsoft Edge */
+.video::-webkit-media-controls-enclosure {
+  display: none !important;
 }

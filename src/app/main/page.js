@@ -46,7 +46,7 @@ export default async function Maincontent() {
       ) : (
         <div className={style.loadingpagerr}>
           {/* <Loaders></Loaders> */}
-          <p>Loading..</p>
+          <p style={{marginTop:"100px"}} >Loading..</p>
         </div>
       )}
       <Footer  ></Footer>
