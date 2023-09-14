@@ -8,7 +8,7 @@ import { BeatLoader } from "react-spinners";
 export default function Loading() {
     const [loading,setloading]=useState(true)
   return (
-    <div style={{textAlign:"center", alignItems:"center", width:"100%"}} >
+    <div style={{textAlign:"center", alignItems:"center",marginTop:"300px", width:"100%"}} >
       <BeatLoader color="#000" loading={loading} size={25} />
     </div>
   );

@@ -1,5 +1,9 @@
+"use client";
 import React from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import style from "./style.module.css";
+import { useRouter } from "next/navigation";
 import {
   FaFacebookSquare,
   FaInstagram,
@@ -10,9 +14,65 @@ import {
 import localfont from "next/font/local";
 const gfont = localfont({ src: "../../fonts/Poppins-Regular.ttf" });
 const Footer = () => {
+  const navigate = useRouter();
+
+  function ShowSiteleaving() {
+    toast.warn(
+      <div
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
+        <p style={{ ...gfont.style, color: "red" }}>
+          You are About to Leave Zaxbys Site
+        </p>
+
+        <div
+          className={style.buttonsection}
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          <button
+            className={style.confirmbtn}
+            onClick={() => {
+              navigate.push(
+                "https://www.linkedin.com/in/abhishek-y-88615b216/"
+              );
+            }}
+          >
+            Confirm
+          </button>
+          <button
+            className={style.cancelbtn}
+            onClick={() => {
+              toast.dismiss();
+            }}
+          >
+            Cancel
+          </button>
+        </div>
+      </div>,
+      {
+        hideProgressBar: true,
+        position: "top-center",
+        autoClose: false,
+        className: style.customtoast,
+      }
+    );
+  }
+
   return (
     <div className={style.footersection}>
-      <div style={{ ...gfont.style, width: "400px", textAlign: "justify", marginTop: "30px" }}>
+      <ToastContainer />
+      <div
+        style={{
+          ...gfont.style,
+          width: "400px",
+          textAlign: "justify",
+          marginTop: "30px",
+        }}
+      >
         <div>
           <h1> About Us </h1>
         </div>
@@ -35,48 +95,55 @@ const Footer = () => {
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-          <a className={style.links} href="">FAQ&apos;s</a>
-          <a className={style.links} href="">Terms and Conditions</a>
-          <a className={style.links} href="">Privacy Policy</a>
+          <a className={style.links} href="">
+            FAQ&apos;s
+          </a>
+          <a className={style.links} href="">
+            Terms and Conditions
+          </a>
+          <a className={style.links} href="">
+            Privacy Policy
+          </a>
         </div>
 
         <p style={{ ...gfont.style, fontSize: "20px" }}>
           Follow us On Social Media
         </p>
         <div className={style.sociallinks}>
-          <a
-            target="_blank"
-            href="https://www.linkedin.com/in/abhishek-y-88615b216/"
-          >
-            {" "}
-            <FaFacebookSquare size={30}></FaFacebookSquare>
-          </a>
-          <a
-            target="_blank"
-            href="https://www.linkedin.com/in/abhishek-y-88615b216/"
-          >
-            {" "}
-            <FaInstagram size={30}></FaInstagram>
-          </a>
-          <a
-            target="_blank"
-            href="https://www.linkedin.com/in/abhishek-y-88615b216/"
-          >
-            {" "}
-            <FaTwitter size={30}></FaTwitter>
-          </a>
-          <a
-            target="_blank"
-            href="https://www.linkedin.com/in/abhishek-y-88615b216/"
-          >
-            <FaYoutube size={30}></FaYoutube>
-          </a>
-          <a
-            target="_blank"
-            href="https://www.linkedin.com/in/abhishek-y-88615b216/"
-          >
-            <FaLinkedin size={30}></FaLinkedin>
-          </a>
+          <FaFacebookSquare
+            className={style.icons}
+            onClick={ShowSiteleaving}
+            color="black"
+            size={30}
+          ></FaFacebookSquare>
+
+          <FaInstagram
+            className={style.icons}
+            onClick={ShowSiteleaving}
+            color="black"
+            size={30}
+          ></FaInstagram>
+
+          <FaTwitter
+            className={style.icons}
+            onClick={ShowSiteleaving}
+            color="black"
+            size={30}
+          ></FaTwitter>
+
+          <FaYoutube
+            className={style.icons}
+            onClick={ShowSiteleaving}
+            color="black"
+            size={30}
+          ></FaYoutube>
+
+          <FaLinkedin
+            className={style.icons}
+            color="black"
+            onClick={ShowSiteleaving}
+            size={30}
+          ></FaLinkedin>
         </div>
       </div>
 

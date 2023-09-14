@@ -49,7 +49,7 @@ export default async function Maincontent() {
           <p>Loading..</p>
         </div>
       )}
-      <Footer></Footer>
+      <Footer  ></Footer>
     </div>
   );
 }
