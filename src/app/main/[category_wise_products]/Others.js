@@ -11,6 +11,7 @@ import "./Slickstyle.css";
 import NextArrow from "./NextArrow";
 import { useRouter } from "next/navigation";
 import PrevArrow from "./PrevArrow";
+import { API_URL } from "@/app/Consts";
 
 const gfont = localfont({ src: "../../fonts/Poppins-Regular.ttf" });
 
@@ -26,13 +27,10 @@ export default function Others({ category_wise_products, category, id }) {
   function getproducts() {
     axios
       .get(
-        `https://zaxbys-strapi.onrender.com/api/categorywiseproductlists?filters[category][$eq]=${category}`
+        `${API_URL}/categorywiseproductlists?filters[category][$eq]=${category}`
       )
       .then((res) => {
         if (res.status === 200 && res.data) {
-          console.log(
-            res.data.data.map((ele) => console.log(ele.attributes.Productname))
-          );
           setproducts(res.data.data);
         }
       })
@@ -40,11 +38,10 @@ export default function Others({ category_wise_products, category, id }) {
         console.log(err);
       });
   }
-  console.log("products", products);
 
   function navigateto(path) {
     window.scroll(0, 0);
-    console.log("path", path);
+
     router.push(`${category_wise_products}/${path}`);
   }
 
@@ -84,7 +81,7 @@ export default function Others({ category_wise_products, category, id }) {
   };
 
   return (
-    <div >
+    <div>
       {products.length != 0 && (
         <p className={style.categoryname} style={gfont.style}>
           {category}
@@ -96,6 +93,8 @@ export default function Others({ category_wise_products, category, id }) {
           <div className={style.wrapper}>
             <Slider {...settings}>
               {products.map((ele, i) => {
+                const { imageurl, Productname, Price } = ele.attributes;
+
                 return (
                   <div
                     className={style.cards}
@@ -105,18 +104,18 @@ export default function Others({ category_wise_products, category, id }) {
                     }}
                   >
                     <Image
-                      src={ele.attributes.imageurl}
+                      src={imageurl}
                       className={style.prodimage}
                       width={150}
                       height={130}
                       alt="image"
                     ></Image>
                     <p style={gfont.style} className={style.producttitle}>
-                      {ele.attributes.Productname}
+                      {Productname}
                     </p>
                     <div className={style.addsection}>
                       <p className={style.productprice} style={gfont.style}>
-                        Price :{ele.attributes.Price}$
+                        Price :{Price}$
                       </p>
                       <button style={gfont.style} className={style.addbtn}>
                         Add

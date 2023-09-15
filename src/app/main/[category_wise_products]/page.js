@@ -28,8 +28,6 @@ export default function CategoryWiseProducts({ params }) {
     ? params.category_wise_products.replace(/%20/g, "")
     : params.category_wise_products;
 
-  console.log("cleaned", Cleanedcategory);
-
   const [products, setproducts] = useState([]);
   const [catgeorymenu, setcatgeorymenu] = useState([]);
 
@@ -42,10 +40,6 @@ export default function CategoryWiseProducts({ params }) {
       )
       .then((res) => {
         if (res.status === 200 && res.data) {
-          console.log(
-            res.data.data.map((ele) => console.log(ele.attributes.Productname))
-          );
-          console.log(res.data);
           setproducts(res.data.data);
         }
       })
@@ -66,7 +60,6 @@ export default function CategoryWiseProducts({ params }) {
               })
             )
           );
-          console.log("filtered", filteredcategorynavbar);
 
           setcatgeorymenu(filteredcategorynavbar);
         }
@@ -81,7 +74,7 @@ export default function CategoryWiseProducts({ params }) {
 
   function navigateto(path) {
     window.scroll(0, 0);
-    console.log("path", path);
+
     router.push(`${params.category_wise_products}/${path}`);
   }
 
@@ -135,65 +128,65 @@ export default function CategoryWiseProducts({ params }) {
           })}
         </div>
       </nav>
-      <div style={{backgroundColor:"#d4e0f0",height:"auto",width:"100%"}}>
-      <div className={style.container}>
-        {products.length != 0 && (
-          <p className={style.categoryname} style={gfont.style}>
-            {params.category_wise_products}
-            
-          </p>
-        )}
+      <div className={style.maincontainer}>
+        <div className={style.container}>
+          {products.length != 0 && (
+            <p className={style.categoryname} style={gfont.style}>
+              {params.category_wise_products}
+            </p>
+          )}
 
-        {products.length != 0 && (
-          <>
-            <div className={style.wrapper}>
-              <Slider {...settings}>
-                {products.map((ele, i) => {
-                  return (
-                    <div
-                      className={style.cards}
-                      key={i}
-                      onClick={() => {
-                        navigateto(ele.id);
-                      }}
-                    >
-                      <Image
-                        src={ele.attributes.imageurl}
-                        className={style.prodimage}
-                        width={150}
-                        height={130}
-                        alt="image"
-                      ></Image>
-                      <p style={gfont.style} className={style.producttitle}>
-                        {ele.attributes.Productname}
-                      </p>
-                      <div className={style.addsection}>
-                        <p className={style.productprice} style={gfont.style}>
-                          Price :{ele.attributes.Price}$
+          {products.length != 0 && (
+            <>
+              <div className={style.wrapper}>
+                <Slider {...settings}>
+                  {products.map((ele, i) => {
+                    const { imageurl, Productname, Price } = ele.attributes;
+                    return (
+                      <div
+                        className={style.cards}
+                        key={i}
+                        onClick={() => {
+                          navigateto(ele.id);
+                        }}
+                      >
+                        <Image
+                          src={imageurl}
+                          className={style.prodimage}
+                          width={150}
+                          height={130}
+                          alt="image"
+                        ></Image>
+                        <p style={gfont.style} className={style.producttitle}>
+                          {Productname}
                         </p>
-                        <button style={gfont.style} className={style.addbtn}>
-                          Add
-                        </button>
+                        <div className={style.addsection}>
+                          <p className={style.productprice} style={gfont.style}>
+                            Price :{Price}$
+                          </p>
+                          <button style={gfont.style} className={style.addbtn}>
+                            Add
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
-              </Slider>
-            </div>
-          </>
-        )}
-       
-       {catgeorymenu.map((categories, i) => {
-          return (
-            <div style={{marginTop:"50px"}} key={i} id={categories}>
-              <Others
-                category_wise_products={params.category_wise_products}
-                category={categories}
-              ></Others>
-            </div>
-          );
-        })}
-      </div>
+                    );
+                  })}
+                </Slider>
+              </div>
+            </>
+          )}
+
+          {catgeorymenu.map((categories, i) => {
+            return (
+              <div className={style.othersection} key={i} id={categories}>
+                <Others
+                  category_wise_products={params.category_wise_products}
+                  category={categories}
+                ></Others>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </>
   );

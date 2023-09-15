@@ -5,44 +5,43 @@ import Image from "next/image";
 import style from "./style.module.css";
 import localfont from "next/font/local";
 import { useRouter } from "next/navigation";
-import Header from "@/app/Header/page";
-import Navbar from "@/app/Navbar/page";
+import { BUY_NOW_BTN, CLOSE, NOT_ABLE_FIND } from "@/app/Consts";
 
 const gfont = localfont({ src: "../../../fonts/Poppins-Regular.ttf" });
-
 
 function Page({ params }) {
   const router = useRouter();
   const [product, setproduct] = useState({});
-  console.log(params);
-
-
+  const url = `https://zaxbys-strapi.onrender.com/api/categorywiseproductlists?filters[id][$eq]=${params.Individualproduct}`;
   function navigateto() {
-    window.scroll(0,0)
+    window.scroll(0, 0);
     router.push(`/main/${params.category_wise_products}`);
   }
-
-
-  const url = `https://zaxbys-strapi.onrender.com/api/categorywiseproductlists?filters[id][$eq]=${params.Individualproduct}`;
   useEffect(() => {
+    getproduct();
+  }, [url]);
+
+  function getproduct() {
     axios
       .get(url)
       .then((res) => {
-        console.log(res.data);
         setproduct(res.data.data[0]);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [url]);
+  }
+
+  if (product?.attributes) {
+    var { Price, Productname, description, imageurl } = product?.attributes;
+  }
 
   return (
     <div className={style.content}>
-     
       {product === undefined ? (
         <>
-          <p style={{ ...gfont.style, textAlign: "center", marginTop: "50px" }}>
-            Not able to find the product
+          <p className={style.notfound} style={gfont.style}>
+            {NOT_ABLE_FIND}
           </p>
         </>
       ) : (
@@ -52,29 +51,31 @@ function Page({ params }) {
               <div className={style.product}>
                 <Image
                   className={style.productimg}
-                  src={product?.attributes?.imageurl}
+                  src={imageurl}
                   width={250}
                   height={230}
                   alt="images"
                 ></Image>
                 <p className={style.title} style={gfont.style}>
-                  {product?.attributes?.Productname}
+                  {Productname}
                 </p>
               </div>
               <div className={style.descwrapper}>
                 <p style={gfont.style} className={style.productdesc}>
-                  {product?.attributes?.description}
+                  {description}
                 </p>
-                <p style={gfont.style}>Price :{product?.attributes?.Price}$</p>
-                <div style={{display:"flex",flexDirection:"row",gap:"20px"}}>
-                <button className={style.buynow} style={gfont.style}>
-                  Buy Now
-                </button>
-                <button className={style.buynow} style={gfont.style}
-                onClick={navigateto}
-                >
-                  Close
-                </button>
+                <p style={gfont.style}>Price :{Price}$</p>
+                <div className={style.btnsection}>
+                  <button className={style.buynow} style={gfont.style}>
+                    {BUY_NOW_BTN}
+                  </button>
+                  <button
+                    className={style.buynow}
+                    style={gfont.style}
+                    onClick={navigateto}
+                  >
+                    {CLOSE}
+                  </button>
                 </div>
               </div>
             </div>

@@ -1,13 +1,10 @@
 "use client"
 import React,{useState} from "react";
 import style from "./style.module.css";
-
 import localfont from "next/font/local";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 const gfont=localfont({src:"../../fonts/Poppins-Regular.ttf"})
-
-
 
 
 export default function ProductDetailCard({ category, imageurl, title, key }) {

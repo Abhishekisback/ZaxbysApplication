@@ -3,7 +3,21 @@ import React from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import style from "./style.module.css";
-import { useRouter } from "next/navigation";
+
+import {
+  COPYWRITE,
+  EMAILID,
+  PHONE_NO,
+  FOLLOW_US,
+  PRIVACY_POLICY,
+  FAQ,
+  TERMS_CONDITIONS,
+  QUICK_LINKS,
+  CONTACT_US,
+  ABOUT_US,
+  LEAVE_SITE_WARNING,
+  ABOUTUSMSG,
+} from "@/app/Consts";
 import {
   FaFacebookSquare,
   FaInstagram,
@@ -14,9 +28,22 @@ import {
 import localfont from "next/font/local";
 const gfont = localfont({ src: "../../fonts/Poppins-Regular.ttf" });
 const Footer = () => {
-  const navigate = useRouter();
-
   function ShowSiteleaving() {
+    function OnConfirm() {
+      toast.dismiss();
+      const newWindow = window.open(
+        "https://www.linkedin.com/in/abhishek-y-88615b216/",
+        "_blank" // This opens the link in a new window or tab
+      );
+      if (newWindow) {
+        newWindow.focus();
+      }
+    }
+
+    function Closepopup() {
+      toast.dismiss();
+    }
+
     toast.warn(
       <div
         onClick={(e) => {
@@ -24,7 +51,7 @@ const Footer = () => {
         }}
       >
         <p style={{ ...gfont.style, color: "red" }}>
-          You are About to Leave Zaxbys Site
+          {LEAVE_SITE_WARNING}
         </p>
 
         <div
@@ -33,27 +60,10 @@ const Footer = () => {
             e.stopPropagation();
           }}
         >
-          <button
-            className={style.confirmbtn}
-            onClick={() => {
-              toast.dismiss();
-              const newWindow = window.open(
-                "https://www.linkedin.com/in/abhishek-y-88615b216/",
-                "_blank" // This opens the link in a new window or tab
-              );
-              if (newWindow) {
-                newWindow.focus(); // Focus on the new window/tab
-              }
-            }}
-          >
+          <button className={style.confirmbtn} onClick={OnConfirm}>
             Confirm
           </button>
-          <button
-            className={style.cancelbtn}
-            onClick={() => {
-              toast.dismiss();
-            }}
-          >
+          <button className={style.cancelbtn} onClick={Closepopup}>
             Cancel
           </button>
         </div>
@@ -67,88 +77,74 @@ const Footer = () => {
     );
   }
 
+  const color="white"
+
   return (
     <div className={style.main}>
-      <div className={style.footersection} >
+      <div className={style.footersection}>
         <ToastContainer />
         <div
-          style={{
-            ...gfont.style,
-            width: "350px",
-            textAlign: "justify",
-            marginTop: "30px",
-          }}
+        className={style.aboutus}
         >
           <div>
-            <h1> About Us </h1>
+            <h1>{ABOUT_US}</h1>
           </div>
           <br />
-          <div>
-            Zaxby&apos;s is known for its diverse menu featuring various chicken
-            options. Their signature items include hand-breaded chicken fingers,
-            traditional and boneless chicken wings, chicken sandwiches, and
-            salads. Customers can choose from a range of sauces and dressings to
-            customize their orders. Zaxby&apos;s offers a unique Southern flavor
-            experience, with a mix of savory and spicy flavors that cater to a
-            wide range of tastes. The food is often described as flavorful and
-            satisfying.
-          </div>
+          <div>{ABOUTUSMSG}</div>
         </div>
 
         <div className={style.quicklinks}>
           <div>
-            <h1 style={gfont.style}>Quick Links</h1>
+            <h1 style={gfont.style}>{QUICK_LINKS}</h1>
           </div>
 
           <div
-            style={{ display: "flex", flexDirection: "column", gap: "20px" }}
+           className={style.quicklinks}
           >
-            <a style={{color:"#0c2340"}} className={style.links} href="">
-              FAQ&apos;s
+            <a  className={style.links} href="">
+              {FAQ}'s
             </a>
-            <a style={{color:"#0c2340"}} className={style.links} href="">
-              Terms and Conditions
+            <a className={style.links} href="">
+              {TERMS_CONDITIONS}
             </a>
-            <a style={{color:"#0c2340"}} className={style.links} href="">
-              Privacy Policy
+            <a  className={style.links} href="">
+              {PRIVACY_POLICY}
             </a>
           </div>
 
-          <p style={{ ...gfont.style, fontSize: "20px" }}>
-            Follow us On Social Media
-          </p>
+          <p style={gfont.style} className={style.followus}>{FOLLOW_US}</p>
           <div className={style.sociallinks}>
             <FaFacebookSquare
               className={style.icons}
               onClick={ShowSiteleaving}
-              color="black"
+              color={color}
               size={30}
             ></FaFacebookSquare>
 
             <FaInstagram
               className={style.icons}
               onClick={ShowSiteleaving}
-              color="black"
+              color={color}
               size={30}
             ></FaInstagram>
 
             <FaTwitter
               className={style.icons}
               onClick={ShowSiteleaving}
-              color="black"
+              color={color}
               size={30}
             ></FaTwitter>
 
             <FaYoutube
               className={style.icons}
               onClick={ShowSiteleaving}
-              color="black"
+              color={color}
               size={30}
             ></FaYoutube>
 
             <FaLinkedin
               className={style.icons}
-              color="black"
+              color={color}
               onClick={ShowSiteleaving}
               size={30}
             ></FaLinkedin>
@@ -157,22 +153,25 @@ const Footer = () => {
 
         <div className={style.contactsec}>
           <div>
-            <h2 style={gfont.style}>Contact Us</h2>
+            <h2 style={gfont.style}>{CONTACT_US}</h2>
           </div>
           <div>
-            <p>Ph : +91 9611346606</p>
+            <p>Ph : {PHONE_NO}</p>
             <br></br>
             <p>
               Email:
-              <a style={{color:"#0c2340"}} href="mailto:26abhishek.y@gmail.com">26abhishek.y@gmail.com</a>
+              <a
+                style={{ color: "#0c2340" }}
+                href="mailto:26abhishek.y@gmail.com"
+              >
+                {EMAILID}
+              </a>
             </p>
           </div>
         </div>
       </div>
-      
-      <div class={style.copyright}>
-        &copy; 2023 Abhishek Designs. All Rights Reserved.
-      </div>
+
+      <div class={style.copyright}> &copy;{COPYWRITE}</div>
     </div>
   );
 };

@@ -7,28 +7,24 @@ import localfont from "next/font/local";
 import locator from "../../../public/Images/location.png";
 import { FaBars, FaTimes } from "react-icons/fa";
 import axios from "axios";
-import { useRouter,usePathname } from "next/navigation";
-
+import { useRouter, usePathname } from "next/navigation";
+import { API_URL } from "../Consts";
 
 const gfont = localfont({ src: "../fonts/Poppins-Regular.ttf" });
 
-export default function Navbar({navarray}) {
+export default function Navbar({ navarray }) {
   const [openmenu, setopenmenu] = useState(false);
   const [navbardata, setnavbardata] = useState();
   const navigateto = useRouter();
-  const pathname=usePathname();
-  const ishomepage=pathname === "/" || pathname === "/main"
-  
+  const pathname = usePathname();
+  const ishomepage = pathname === "/" || pathname === "/main";
+
   function getNavbarfields() {
     axios
-      .get("https://zaxbys-strapi.onrender.com/api/get-navbar-fields")
+      .get(`${API_URL}/get-navbar-fields`)
       .then((res) => {
         if (res.status === 200) {
           setnavbardata(res?.data);
-          console.log(navbardata.data[0].attributes.NavbarArray.startorderbtn);
-          res?.data?.data[0]?.attributes?.NavbarArray?.navitems.map((ele, i) =>
-            console.log(ele)
-          );
         }
       })
       .catch((err) => console.log(err));
@@ -53,7 +49,7 @@ export default function Navbar({navarray}) {
   return (
     <>
       {navbardata?.data[0]?.attributes ? (
-        <nav className={ ishomepage  ?  style.navbar :style.fixednavbar  }>
+        <nav className={ishomepage ? style.navbar : style.fixednavbar}>
           <div className={style.menuicon}>
             {openmenu ? (
               <FaTimes

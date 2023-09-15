@@ -12,6 +12,7 @@ export default async function Header() {
     "GET"
   );
 
+  const {line1,line2,line3}=headerdata?.data?.[0]?.attributes?.Headerdata
   return (
     <>
       {headerdata === undefined ? (
@@ -23,20 +24,17 @@ export default async function Header() {
           {headerdata?.data?.[0]?.attributes?.Headerdata ? (
             <div className={style.headerSection}>
               <h3 style={gfont.style} className={style.headerline1}>
-                {headerdata.data[0].attributes.Headerdata.line1}
+                {line1}
               </h3>
               <h4 className={style.headerline2} style={gfont.style}>
-                {headerdata.data[0].attributes.Headerdata.line2}
+               {line2}
               </h4>
               <h4 className={style.headerline3} style={gfont.style}>
-                {headerdata.data[0].attributes.Headerdata.line3}
+                {line3}
               </h4>
               <div
-                style={{
-                  flexDirection: "row-reverse",
-                  marginRight: "50px",
-                  display: "flex",
-                }}
+              className={style.signuploginbtn}
+               
               >
                 <SignupLoginbtn />
               </div>

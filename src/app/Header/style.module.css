@@ -30,6 +30,12 @@
   padding: 10px;
   text-decoration: underline;
 }
+.signuploginbtn
+{
+  display: flex;
+  flex-direction: row-reverse;
+  margin-right: 50px;
+}
 
 @media screen and (max-width: 780px) {
   .headerline2 {

@@ -2,13 +2,13 @@ import { MakeApiCall } from "@/app/MakeAPICall";
 import React from "react";
 import style from "./style.module.css"
 import localfont from "next/font/local";
-// const myfont4 = localfont({ src: "../../fonts/zaxscript-regular.woff" });
-// const myfont3 = localfont({ src: "../../fonts/zaxsans-regular.woff" });
 const gfont=localfont({src:"../../fonts/Poppins-Regular.ttf"})
 
 export default async function FeedingCrowdComponent() {
 
     let feedingcrowd= await MakeApiCall("https://zaxbys-strapi.onrender.com/api/feeding-crowds","GET");
+
+    const {feedingline,feedingmenu,btn_order}=feedingcrowd.data[0].attributes.feedingcrowdsection
 
   return (
     
@@ -17,14 +17,15 @@ export default async function FeedingCrowdComponent() {
         feedingcrowd?.data?.[0]?.attributes ?(
           <div className={style.feedingacrowd}>
         <p style={gfont.style} className={style.feed}>
-          {feedingcrowd?.data?.[0]?.attributes?.feedingcrowdsection?.feedingline}
+          {feedingline}
           <span style={gfont.style} className={style.feedmenu}>
-            {feedingcrowd?.data?.[0]?.attributes?.feedingcrowdsection?.feedingmenu}
+            
+            {feedingmenu}
           </span>
         </p>
         <a href="/main/Food">
         <button className={style.ordernow} style={gfont.style}>
-          {feedingcrowd?.data?.[0]?.attributes?.feedingcrowdsection?.btn_order}
+         {btn_order}
         </button>
         </a>
       </div>

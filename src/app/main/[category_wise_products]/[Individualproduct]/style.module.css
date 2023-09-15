@@ -76,6 +76,17 @@
   font-weight: bolder;
 }
 
+.btnsection
+{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.notfound
+{
+  text-align: center;
+  margin-top: 40px;
+}
 @media screen and (max-width:780px) {
   .mainwrapper{
     width: 250px;

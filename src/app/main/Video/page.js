@@ -9,14 +9,16 @@ export default async function VideoSection() {
     "https://zaxbys-strapi.onrender.com/api/zaxbys-behind-scene-videos",
     "GET"
   );
-  console.log("introvideo", introvideo);
+  
+  const { video_url } = introvideo.data[0].attributes;
+  
   return (
     <>
       {introvideo?.data?.[0]?.attributes?.video_url ? (
         <div>
           <video className={style.video} loop autoPlay muted controls>
             <source
-              src={introvideo.data[0].attributes.video_url}
+              src={video_url}
               type="video/mp4"
             />
           </video>
