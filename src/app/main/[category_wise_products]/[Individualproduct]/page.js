@@ -6,6 +6,7 @@ import style from "./style.module.css";
 import localfont from "next/font/local";
 import { useRouter } from "next/navigation";
 import { BUY_NOW_BTN, CLOSE, NOT_ABLE_FIND } from "@/app/Consts";
+import Loading from "../../spinner/page";
 
 const gfont = localfont({ src: "../../../fonts/Poppins-Regular.ttf" });
 
@@ -81,6 +82,7 @@ function Page({ params }) {
             </div>
           ) : (
             <div style={gfont.style} className={style.onerror}>
+              <Loading/>
               Loading....
             </div>
           )}

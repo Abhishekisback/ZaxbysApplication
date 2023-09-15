@@ -6,7 +6,7 @@ import { MakeApiCall } from "../MakeAPICall";
 import ProductDetailCard from "./ProductDetailCard/page";
 
 import localfont from "next/font/local";
-import Footer from "./Footer/page";
+import Footer from "../Footer/page";
 
 const gfont = localfont({ src: "../fonts/Poppins-Regular.ttf" });
 
@@ -44,7 +44,7 @@ export default async function Maincontent() {
           <p style={gfont.style} className={style.loading}>Loading..</p>
         </div>
       )}
-      <Footer />
+      <Footer/>
     </div>
   );
 }

@@ -12,6 +12,8 @@ export default async function Header() {
     "GET"
   );
 
+  const isdataavailable=!!headerdata?.data?.[0]?.attributes?.Headerdata
+
   const {line1,line2,line3}=headerdata?.data?.[0]?.attributes?.Headerdata
   return (
     <>
@@ -21,7 +23,7 @@ export default async function Header() {
         </>
       ) : (
         <div >
-          {headerdata?.data?.[0]?.attributes?.Headerdata ? (
+          {isdataavailable ? (
             <div className={style.headerSection}>
               <h3 style={gfont.style} className={style.headerline1}>
                 {line1}

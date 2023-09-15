@@ -26,7 +26,7 @@ import {
   FaLinkedin,
 } from "react-icons/fa";
 import localfont from "next/font/local";
-const gfont = localfont({ src: "../../fonts/Poppins-Regular.ttf" });
+const gfont = localfont({ src: "../fonts/Poppins-Regular.ttf" });
 const Footer = () => {
   function ShowSiteleaving() {
     function OnConfirm() {
@@ -102,7 +102,7 @@ const Footer = () => {
            className={style.quicklinks}
           >
             <a  className={style.links} href="">
-              {FAQ}'s
+              {FAQ}&apos;
             </a>
             <a className={style.links} href="">
               {TERMS_CONDITIONS}
