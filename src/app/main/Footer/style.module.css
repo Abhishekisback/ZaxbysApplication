@@ -80,6 +80,9 @@
     color: white;
     margin-bottom: 100px;
   }
+  .main{
+    background-color: #E65100;
+  }
 
 
 @media screen and (max-width: 780px) {
@@ -89,9 +92,25 @@
     background-color: #E65100;
     display: flex;
     flex-direction: column;
+    gap: 20px;
+    height: max-content;
+   
+    
   }
   .customtoast
   {
     margin-left: 50px;
+  }
+
+  .copyright{
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .main{
+    background-color: #E65100;
+    display: flex;
+    flex-direction: column;
+   
   }
 }

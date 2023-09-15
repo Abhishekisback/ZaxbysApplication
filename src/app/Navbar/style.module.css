@@ -108,7 +108,7 @@
     background-color: white;
     align-items: flex-start;
     text-align: justify;
-   
+    position: relative;
   }
   .fixednavbar{
     display: flex;

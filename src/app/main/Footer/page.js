@@ -68,13 +68,13 @@ const Footer = () => {
   }
 
   return (
-    <div style={{backgroundColor:"#E65100"}}>
+    <div className={style.main}>
       <div className={style.footersection} >
         <ToastContainer />
         <div
           style={{
             ...gfont.style,
-            width: "400px",
+            width: "350px",
             textAlign: "justify",
             marginTop: "30px",
           }}
